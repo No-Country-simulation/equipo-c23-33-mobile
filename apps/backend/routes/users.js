@@ -1,6 +1,6 @@
-import Usuario from '../models/users';
+const Usuario = require('../models/users');
 
-import { Router } from 'express';
+const { Router } = require('express');
 const router = Router();
 console.log(router);
 
@@ -25,6 +25,8 @@ router.get('/usuarios/:id', async (req, res) => {
 });
 
 router.post('/usuarios', async (req, res) => {
+    console.log(req.body);
+    
     const { Nombre, Email, Contraseña, Rol } = req.body;
     try {
         const usuario = await Usuario.create({ Nombre, Email, Contraseña, Rol });
@@ -66,6 +68,6 @@ router.delete('/usuarios/:id', async (req, res) => {
 
 
 
-export default  router;
+module.exports =  router;
 
 

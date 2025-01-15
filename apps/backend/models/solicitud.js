@@ -8,3 +8,5 @@ const Solicitud_Adopción = sequelize.define('Solicitud_Adopción', {
     Fecha_Solicitud: DataTypes.DATE,
     Estado: DataTypes.STRING
 }, { tableName: 'Solicitud_Adopción', timestamps: false });
+
+module.exports = Solicitud_Adopción;

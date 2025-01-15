@@ -1,15 +1,28 @@
-// Define models
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const { DataTypes } = require('sequelize'); 
+const sequelize = require('../database'); 
 
+// Define el modelo Usuario
 const Usuario = sequelize.define('Usuario', {
-    ID_Usuario: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    Nombre: DataTypes.STRING,
-    Email: DataTypes.STRING,
-    Contraseña: DataTypes.STRING,
-    Rol: DataTypes.STRING
-}, { tableName: 'Usuario', timestamps: false });
+    ID_Usuario: { 
+        type: DataTypes.INTEGER, 
+        primaryKey: true, 
+        autoIncrement: true 
+    },
+    Nombre: { 
+        type: DataTypes.STRING 
+    },
+    Email: { 
+        type: DataTypes.STRING 
+    },
+    Contraseña: { 
+        type: DataTypes.STRING 
+    },
+    Rol: { 
+        type: DataTypes.STRING 
+    }
+}, { 
+    tableName: 'Usuarios', // Nombre de la tabla en la base de datos
+    timestamps: false // Desactiva las columnas `createdAt` y `updatedAt`
+});
 
-
-
-
+module.exports = Usuario;
