@@ -9,6 +9,7 @@
 ### Firebase Patch ###
 .runtimeconfig.json
 .firebase/
+/apps/backend/config/api-mascotas-46740-firebase-adminsdk-tpf97-2ab385f558.json  
 
 ### Flutter ###
 # Flutter/Dart/Pub related
