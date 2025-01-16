@@ -1,4 +1,4 @@
-const sequelize = require('../config/database');
+const sequelize = require('../database');
 const { DataTypes } = require('sequelize');
 
 const Refugio = sequelize.define('Refugio', {
@@ -11,3 +11,5 @@ const Refugio = sequelize.define('Refugio', {
     ID_Usuario: DataTypes.INTEGER,
     ID_Administrador: DataTypes.INTEGER
 }, { tableName: 'Refugio', timestamps: false });
+
+module.exports = Refugio;

@@ -6,7 +6,7 @@ console.log(router);
 
 
 // CRUD for Usuario
-router.get('/usuarios', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const usuarios = await Usuario.findAll();
         res.json(usuarios);
@@ -15,7 +15,7 @@ router.get('/usuarios', async (req, res) => {
     }
 });
 
-router.get('/usuarios/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const usuario = await Usuario.findByPk(req.params.id);
         res.json(usuario);
@@ -24,7 +24,7 @@ router.get('/usuarios/:id', async (req, res) => {
     }
 });
 
-router.post('/usuarios', async (req, res) => {
+router.post('/', async (req, res) => {
     console.log(req.body);
     
     const { Nombre, Email, Contraseña, Rol } = req.body;
@@ -36,7 +36,7 @@ router.post('/usuarios', async (req, res) => {
     }
 });
 
-router.put('/usuarios/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     const { Nombre, Email, Contraseña, Rol } = req.body;
     try {
         const usuario = await Usuario.findByPk(req.params.id);
@@ -51,7 +51,7 @@ router.put('/usuarios/:id', async (req, res) => {
     }
 });
 
-router.delete('/usuarios/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const usuario = await Usuario.findByPk(req.params.id);
         if (usuario) {

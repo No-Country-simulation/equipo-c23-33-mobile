@@ -1,10 +1,10 @@
-import Solicitud_Adopción from '../../models/solicitud.js';
-import { Router } from 'express';
+const Solicitud_Adopción = require('../models/solicitud')
+const { Router } = require('express');
 const router = Router();
 
 
 // CRUD for Solicitud_Adopción
-router.get('/solicitudes', async (req, res) => {
+router.get('', async (req, res) => {
     try {
         const solicitudes = await Solicitud_Adopción.findAll();
         res.json(solicitudes);
@@ -13,7 +13,7 @@ router.get('/solicitudes', async (req, res) => {
     }
 });
 
-router.get('/solicitudes/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const solicitud = await Solicitud_Adopción.findByPk(req.params.id);
         res.json(solicitud);
@@ -22,7 +22,7 @@ router.get('/solicitudes/:id', async (req, res) => {
     }
 });
 
-router.post('/solicitudes', async (req, res) => {
+router.post('', async (req, res) => {
     const { ID_Usuario, ID_Mascota, Fecha_Solicitud, Estado } = req.body;
     try {
         const solicitud = await Solicitud_Adopción.create({ ID_Usuario, ID_Mascota, Fecha_Solicitud, Estado });
@@ -32,7 +32,7 @@ router.post('/solicitudes', async (req, res) => {
     }
 });
 
-router.put('/solicitudes/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     const { ID_Usuario, ID_Mascota, Fecha_Solicitud, Estado } = req.body;
     try {
         const solicitud = await Solicitud_Adopción.findByPk(req.params.id);
@@ -47,7 +47,7 @@ router.put('/solicitudes/:id', async (req, res) => {
     }
 });
 
-router.delete('/solicitudes/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const solicitud = await Solicitud_Adopción.findByPk(req.params.id);
         if (solicitud) {
@@ -60,3 +60,5 @@ router.delete('/solicitudes/:id', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+module.exports = router;

@@ -1,4 +1,4 @@
-const sequelize = require('../config/database');
+const sequelize = require('../database');
 const { DataTypes } = require('sequelize');
 
 const Solicitud_Adopción = sequelize.define('Solicitud_Adopción', {
@@ -6,7 +6,7 @@ const Solicitud_Adopción = sequelize.define('Solicitud_Adopción', {
     ID_Usuario: DataTypes.INTEGER,
     ID_Mascota: DataTypes.INTEGER,
     Fecha_Solicitud: DataTypes.DATE,
-    Estado: DataTypes.STRING
-}, { tableName: 'Solicitud_Adopción', timestamps: false });
+    Estado: DataTypes.STRING // puede ser pendiente, aprobado, rechazado
+}, { tableName: 'Solicitud_Adopción', timestamps: true });
 
 module.exports = Solicitud_Adopción;

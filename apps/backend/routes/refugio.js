@@ -1,10 +1,10 @@
-import Refugio from '../../models/refugio.js';
-import { Router } from 'express';
+const Refugio = require('../models/refugio');
+const { Router } = require('express');
 const router = Router();
 // CRUD for Refugio
 
 
-router.get('/refugios', async (req, res) => {
+router.get('', async (req, res) => {
     try {
         const refugios = await Refugio.findAll();
         res.json(refugios);
@@ -13,7 +13,7 @@ router.get('/refugios', async (req, res) => {
     }
 });
 
-router.get('/refugios/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const refugio = await Refugio.findByPk(req.params.id);
         res.json(refugio);
@@ -22,7 +22,7 @@ router.get('/refugios/:id', async (req, res) => {
     }
 });
 
-router.post('/refugios', async (req, res) => {
+router.post('', async (req, res) => {
     const { Nombre, Dirección, Teléfono, Email, Capacidad_Mascotas, ID_Usuario, ID_Administrador } = req.body;
     try {
         const refugio = await Refugio.create({ Nombre, Dirección, Teléfono, Email, Capacidad_Mascotas, ID_Usuario, ID_Administrador });
@@ -32,7 +32,7 @@ router.post('/refugios', async (req, res) => {
     }
 });
 
-router.put('/refugios/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     const { Nombre, Dirección, Teléfono, Email, Capacidad_Mascotas, ID_Usuario, ID_Administrador } = req.body;
     try {
         const refugio = await Refugio.findByPk(req.params.id);
@@ -47,7 +47,7 @@ router.put('/refugios/:id', async (req, res) => {
     }
 });
 
-router.delete('/refugios/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const refugio = await Refugio.findByPk(req.params.id);
         if (refugio) {
@@ -61,3 +61,4 @@ router.delete('/refugios/:id', async (req, res) => {
     }
 });
 
+module.exports = router;

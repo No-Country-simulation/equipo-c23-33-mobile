@@ -18,7 +18,7 @@ const Usuario = sequelize.define('Usuario', {
         type: DataTypes.STRING 
     },
     Rol: { 
-        type: DataTypes.STRING 
+        type: DataTypes.STRING // persona interesada, refugio, administrador
     }
 }, { 
     tableName: 'Usuarios', // Nombre de la tabla en la base de datos
