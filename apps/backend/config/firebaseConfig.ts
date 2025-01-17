@@ -3,9 +3,6 @@ import * as dotenv from 'dotenv';
 // import * as serviceAccount from './api-mascotas-46740-firebase-adminsdk-tpf97-2ab385f558.json';
 
 dotenv.config();
-// Ajusta la ruta según tu estructura  
-console.log(process.env.FIREBASE_TYPE);
-
 
 const serviceAccount = {
   type: process.env.FIREBASE_TYPE,
