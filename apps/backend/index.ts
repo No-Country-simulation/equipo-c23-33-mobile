@@ -1,15 +1,19 @@
-import express from 'express';  
-import mascotaRoutes from './routes/mascotaRoutes';  
-import refugioRoutes from './routes/refugioRoutes';  
+import express from 'express';
+import dotenv from 'dotenv';
+import mascotaRoutes from './routes/mascotaRoutes';
+import refugioRoutes from './routes/refugioRoutes';
 
-const app = express();  
-app.use(express.json());  
+// Cargar las variables de entorno desde el archivo .env
+dotenv.config();
 
-const PORT = process.env.PORT || 3000;  
+const app = express();
+app.use(express.json());
 
-app.use('/mascotas', mascotaRoutes);  
-app.use('/refugios', refugioRoutes);  
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {  
-  console.log(`Servidor corriendo en puerto ${PORT}`);  
+app.use('/mascotas', mascotaRoutes);
+app.use('/refugios', refugioRoutes);
+
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en puerto ${PORT}`);
 });
