@@ -1,8 +1,11 @@
-
 import * as admin from 'firebase-admin';
 import * as dotenv from 'dotenv';
+// import * as serviceAccount from './api-mascotas-46740-firebase-adminsdk-tpf97-2ab385f558.json';
 
 dotenv.config();
+// Ajusta la ruta según tu estructura  
+console.log(process.env.FIREBASE_TYPE);
+
 
 const serviceAccount = {
   type: process.env.FIREBASE_TYPE,
@@ -23,7 +26,7 @@ if (!serviceAccount.project_id) {
 
 admin.initializeApp({  
   credential: admin.credential.cert(serviceAccount as admin.ServiceAccount), // Configura las credenciales  
-  databaseURL: 'https://api-mascotas-46740.firebaseio.com' // Cambia esto por tu URL de base de datos  
+  databaseURL: process.env.FIREBASE_DATABASE_URL // Cambia esto por tu URL de base de datos  
 });  
 
 // Para usar Firestore  
