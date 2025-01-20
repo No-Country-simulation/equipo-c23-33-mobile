@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        scaffoldBackgroundColor: Color.fromRGBO(250, 250, 250, 1),
         useMaterial3: true,
       ),
       home: const Home(), // Llamamos al componente Home como pantalla inicial
