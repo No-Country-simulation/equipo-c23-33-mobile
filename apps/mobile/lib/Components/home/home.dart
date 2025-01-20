@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/Components/home/appbar_home.dart';
+import 'package:mobile/Components/home/welcome_card.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,10 +15,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBarHome(),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
-        ),
+        child: WelcomeCard(),
       ),
     );
   }
