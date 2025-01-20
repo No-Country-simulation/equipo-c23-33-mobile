@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mobile/Components/home/filters/filtered_page.dart';
 
 class CategoriesSection extends StatelessWidget {
-  const CategoriesSection({Key? key}) : super(key: key);
+  const CategoriesSection({super.key});
+
+  // parameter 'key'
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +81,7 @@ class CategoriesSection extends StatelessWidget {
           border: Border.all(color: Colors.black12, width: 2),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.6), // Color de la sombra
+              color: Colors.white.withAlpha(153), // alpha = opacidad * 255 -> 0.6 * 255 =  153
               blurRadius: 8, // Difuminado
               offset: const Offset(0, 4), // Sombra desplazada hacia abajo
             ),

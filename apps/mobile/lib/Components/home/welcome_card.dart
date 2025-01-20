@@ -32,7 +32,7 @@ class WelcomeCard extends StatelessWidget {
             child: Image.network(
               'https://i.ibb.co/PmBV8zY/Imagen3.png',
               fit: BoxFit.contain,
-              color: Colors.white.withOpacity(0.3),
+              color: Colors.white.withAlpha(77), // 77 es 30% de opacidad (255 * 0.3) -> alpha = opacidad * 255
             ),
           ),
 
@@ -81,13 +81,12 @@ class WelcomeCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 22),
-                const SizedBox(height: 22),
 
                 // Barra de búsqueda
                 Container(
                   height: 48,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.white.withAlpha(229), // alpha = opacidad * 255 ->  0.9 * 255 = 299
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
