@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart'; // Importa firebase_core
-import 'package:mobile/widgets/login_form.dart';
+import 'package:mobile/screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Asegura la inicialización antes de ejecutar Firebase

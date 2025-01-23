@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/register_screen.dart';
 import 'package:mobile/services/firebase_auth.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
-
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+class RegisterForm extends StatelessWidget {
+  const RegisterForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Mueve los controladores dentro del método build para que sean accesibles.
+    final TextEditingController _emailUserController = TextEditingController();
+    final TextEditingController _passwordUserController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Formulario de Registro'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -26,17 +21,24 @@ class _LoginState extends State<Login> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextField(
-              controller: _emailController,
               decoration: const InputDecoration(
-                labelText: 'Email',
+                labelText: 'Nombre',
                 border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 16),
             TextField(
-              controller: _passwordController,
+              controller: _emailUserController, // Retira el `const` ya que tiene un controlador.
               decoration: const InputDecoration(
-                labelText: 'Password',
+                labelText: 'Correo Electrónico',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: _passwordUserController, // Retira el `const` ya que tiene un controlador.
+              decoration: const InputDecoration(
+                labelText: 'Contraseña',
                 border: OutlineInputBorder(),
               ),
               obscureText: true,
@@ -44,19 +46,10 @@ class _LoginState extends State<Login> {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () async {
-                await FirebaseAuthService.loginUser(
+                await FirebaseAuthService.registerUser(
                   context,
-                  _emailController.text.trim(),
-                  _passwordController.text.trim(),
-                );
-              },
-              child: const Text('Ingresar'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RegisterForm()),
+                  _emailUserController.text.trim(),
+                  _passwordUserController.text.trim(),
                 );
               },
               child: const Text('Registrar Usuario'),
