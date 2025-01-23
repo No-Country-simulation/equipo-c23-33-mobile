@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/Components/home/home.dart';
+import 'package:firebase_core/firebase_core.dart'; // Importa firebase_core
+import 'package:mobile/screens/login_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Asegura la inicialización antes de ejecutar Firebase
+  await Firebase.initializeApp(); // Inicializa Firebase
   runApp(const MyApp());
 }
 
@@ -13,10 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        scaffoldBackgroundColor: Color.fromRGBO(250, 250, 250, 1),
+        scaffoldBackgroundColor: const Color.fromRGBO(250, 250, 250, 1),
         useMaterial3: true,
       ),
-      home: const Home(), // Llamamos al componente Home como pantalla inicial
+      home: const Login(), // Pantalla inicial
     );
   }
 }
