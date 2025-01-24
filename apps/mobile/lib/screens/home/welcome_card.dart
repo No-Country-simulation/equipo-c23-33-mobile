@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/filter/filter.dart'; // Ajusta la ruta según tu estructura
 
 class WelcomeCard extends StatelessWidget {
   const WelcomeCard({super.key});
@@ -107,9 +109,21 @@ class WelcomeCard extends StatelessWidget {
                       ),
                       Container(
                         padding: const EdgeInsets.all(8),
-                        child: const Icon(
-                          Icons.tune,
-                          color: Colors.grey,
+                        child: GestureDetector(
+                          onTap: () {
+                            // Lógica para navegar a la página de filtros
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const FilterPage(category: ("Filtro")),
+                              ),
+                            );
+                          },
+                          child: const Icon(
+                            Icons.tune, // Icono de filtro
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
                     ],
