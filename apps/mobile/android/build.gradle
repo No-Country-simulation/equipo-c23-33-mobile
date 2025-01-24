@@ -16,13 +16,14 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
-dependencies {
-    // ...
 
-    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
-//    compile 'com.firebaseui:firebase-ui-auth:7.2.0'
-
-    // Required only if Facebook login support is required
-    // Find the latest Facebook SDK releases here: https://goo.gl/Ce5L94
-    implementation 'com.facebook.android:facebook-android-sdk:8.x'
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.0-beta05' // Actualización para soportar SDK 34
+        classpath 'com.google.gms:google-services:4.3.15'       // Versión actualizada de Google Services
+    }
 }
