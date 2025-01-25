@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/filter/filter.dart'; // Ajusta la ruta según tu estructura
 
@@ -34,7 +33,7 @@ class WelcomeCard extends StatelessWidget {
             child: Image.network(
               'https://i.ibb.co/PmBV8zY/Imagen3.png',
               fit: BoxFit.contain,
-              color: Colors.white.withOpacity(0.3),
+              color: Colors.white.withAlpha(77), // alpha = opacidad * 255 -> 0.3 * 255 =  76,5 (77)
             ),
           ),
 

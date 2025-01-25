@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'filters.dart';
 import 'dropdown_filters.dart';
 import 'action_buttons.dart';
 
