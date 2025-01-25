@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class FilteredPage extends StatelessWidget {
   final String category; // Recibe la categoría seleccionada
 
-  const FilteredPage({super.key, required this.category}) ;
+  const FilteredPage({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {

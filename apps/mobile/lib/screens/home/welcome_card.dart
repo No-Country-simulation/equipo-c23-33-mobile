@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/filter/filter.dart'; // Ajusta la ruta según tu estructura
 
 class WelcomeCard extends StatelessWidget {
   const WelcomeCard({super.key});
@@ -32,7 +33,7 @@ class WelcomeCard extends StatelessWidget {
             child: Image.network(
               'https://i.ibb.co/PmBV8zY/Imagen3.png',
               fit: BoxFit.contain,
-              color: Colors.white.withAlpha(77), // 77 es 30% de opacidad (255 * 0.3) -> alpha = opacidad * 255
+              color: Colors.white.withAlpha(77), // alpha = opacidad * 255 -> 0.3 * 255 =  76,5 (77)
             ),
           ),
 
@@ -81,12 +82,13 @@ class WelcomeCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 22),
+                const SizedBox(height: 22),
 
                 // Barra de búsqueda
                 Container(
                   height: 48,
                   decoration: BoxDecoration(
-                    color: Colors.white.withAlpha(229), // alpha = opacidad * 255 ->  0.9 * 255 = 299
+                    color: Colors.white.withOpacity(0.9),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
@@ -106,9 +108,21 @@ class WelcomeCard extends StatelessWidget {
                       ),
                       Container(
                         padding: const EdgeInsets.all(8),
-                        child: const Icon(
-                          Icons.tune,
-                          color: Colors.grey,
+                        child: GestureDetector(
+                          onTap: () {
+                            // Lógica para navegar a la página de filtros
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const FilterPage(category: ("Filtro")),
+                              ),
+                            );
+                          },
+                          child: const Icon(
+                            Icons.tune, // Icono de filtro
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
                     ],

@@ -7,8 +7,8 @@ class RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Mueve los controladores dentro del método build para que sean accesibles.
-    final TextEditingController _emailUserController = TextEditingController();
-    final TextEditingController _passwordUserController = TextEditingController();
+    final TextEditingController emailUserController = TextEditingController();
+    final TextEditingController passwordUserController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -28,7 +28,7 @@ class RegisterForm extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             TextField(
-              controller: _emailUserController, // Retira el `const` ya que tiene un controlador.
+              controller: emailUserController, // Retira el `const` ya que tiene un controlador.
               decoration: const InputDecoration(
                 labelText: 'Correo Electrónico',
                 border: OutlineInputBorder(),
@@ -36,7 +36,7 @@ class RegisterForm extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             TextField(
-              controller: _passwordUserController, // Retira el `const` ya que tiene un controlador.
+              controller: passwordUserController, // Retira el `const` ya que tiene un controlador.
               decoration: const InputDecoration(
                 labelText: 'Contraseña',
                 border: OutlineInputBorder(),
@@ -48,8 +48,8 @@ class RegisterForm extends StatelessWidget {
               onPressed: () async {
                 await FirebaseAuthService.registerUser(
                   context,
-                  _emailUserController.text.trim(),
-                  _passwordUserController.text.trim(),
+                  emailUserController.text.trim(),
+                  passwordUserController.text.trim(),
                 );
               },
               child: const Text('Registrar Usuario'),
