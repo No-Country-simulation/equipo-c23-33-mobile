@@ -4,6 +4,7 @@ import 'package:mobile/screens/home/appbar_home.dart';
 import 'package:mobile/screens/home/carousel.dart';
 import 'package:mobile/screens/home/welcome_card.dart';
 import 'package:mobile/screens/home/categories_section.dart';
+import 'package:mobile/screens/navBar/navBar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -32,6 +33,7 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
+        bottomNavigationBar: const NavBar(),
     );
   }
 }
