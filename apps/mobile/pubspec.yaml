@@ -27,3 +27,4 @@ flutter:
   # Agrega los assets para usar imágenes locales
   assets:
     - assets/images/
+    - assets/icons/
