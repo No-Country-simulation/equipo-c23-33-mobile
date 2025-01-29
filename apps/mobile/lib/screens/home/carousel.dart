@@ -5,6 +5,7 @@ class Carousel extends StatefulWidget {
   const Carousel({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CarouselState createState() => _CarouselState();
 }
 
