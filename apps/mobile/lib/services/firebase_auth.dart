@@ -18,10 +18,13 @@ class FirebaseAuthService {
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
+        // ignore: use_build_context_synchronously
         _showSnackBar(context, 'Usuario no encontrado. Intente registrarse.');
       } else if (e.code == 'wrong-password') {
+        // ignore: use_build_context_synchronously
         _showSnackBar(context, 'Contraseña incorrecta.');
       } else {
+        // ignore: use_build_context_synchronously
         _showSnackBar(context, 'Error: ${e.message}');
       }
     }
@@ -61,6 +64,7 @@ class FirebaseAuthService {
         default:
           errorMessage = 'Ocurrió un error. Intente nuevamente.';
       }
+      // ignore: use_build_context_synchronously
       _showSnackBar(context, errorMessage);
     }
   }

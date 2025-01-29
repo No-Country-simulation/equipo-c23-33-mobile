@@ -88,6 +88,7 @@ class WelcomeCard extends StatelessWidget {
                 Container(
                   height: 48,
                   decoration: BoxDecoration(
+                    // ignore: deprecated_member_use
                     color: Colors.white.withOpacity(0.9),
                     borderRadius: BorderRadius.circular(12),
                   ),

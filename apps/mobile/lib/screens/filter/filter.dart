@@ -8,6 +8,7 @@ class FilterPage extends StatefulWidget {
   const FilterPage({super.key, required this.category});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FilterPageState createState() => _FilterPageState();
 }
 
