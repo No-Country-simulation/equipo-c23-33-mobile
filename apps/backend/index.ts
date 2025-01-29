@@ -1,9 +1,8 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import mascotaRoutes from './routes/mascotaRoutes';
 import refugioRoutes from './routes/refugioRoutes';
 
-// Cargar las variables de entorno desde el archivo .env
 dotenv.config();
 
 const app = express();
@@ -14,6 +13,13 @@ const PORT = process.env.PORT || 3000;
 app.use('/pets', mascotaRoutes);
 app.use('/shelters', refugioRoutes);
 
+// Middleware para manejar errores (IMPORTANTE)
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  console.error('Error en el servidor:', err.stack);
+  res.status(err.status || 500).json({ error: err.message || 'Error interno del servidor' });
+});
+
+// Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

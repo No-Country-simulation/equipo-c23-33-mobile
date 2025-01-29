@@ -1,14 +1,40 @@
-// services/refugioService.ts  
-import { db } from '../config/firebaseConfig';  
-import { Refugio } from '../models/Refugio';  
+import { db } from '../config/firebaseConfig';
+import { IRefugio, Refugio } from '../models/Refugio';
 
-export const addRefugio = async (refugioData: Refugio) => {  
-  const nuevoRefugio = new Refugio(refugioData);  
-  const docRef = await db.collection('shelters').add(nuevoRefugio.toFirestore());  
-  return docRef.id;  
-};  
+// Agregar un nuevo refugio
+export const addRefugio = async (refugioData: IRefugio) => {
+  const nuevoRefugio = new Refugio(refugioData);
+  const docRef = await db.collection('shelters').add(nuevoRefugio.toFirestore());
+  return docRef.id;
+};
 
-export const getRefugios = async () => {  
-  const snapshot = await db.collection('shelters').get();  
-  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));  
+// Obtener todos los refugios
+export const getRefugios = async () => {
+  const snapshot = await db.collection('shelters').get();
+  return snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+};
+
+// Obtener refugio por ID
+export const getRefugioById = async (id: string) => {
+  const refugioRef = db.collection('shelters').doc(id);
+  const doc = await refugioRef.get();
+  if (!doc.exists) {
+    return null; // Si no existe el refugio, devolver null
+  }
+  return { id: doc.id, ...doc.data() }; // Retornar los datos del refugio
+};
+
+// Actualizar un refugio por ID
+export const updateRefugio = async (id: string, refugioData: Partial<IRefugio>) => {
+  const refugioRef = db.collection('shelters').doc(id);
+  await refugioRef.update(refugioData);
+};
+
+// Eliminar un refugio por ID
+export const deleteRefugio = async (id: string) => {
+  const refugioRef = db.collection('shelters').doc(id);
+  await refugioRef.delete();
 };
