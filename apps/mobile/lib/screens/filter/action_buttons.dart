@@ -5,30 +5,35 @@ class ActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        _buildClearButton(),
-        _buildApplyButton(),
-      ],
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center, // Centrar los botones
+        children: [
+          _buildCancelButton(),
+          const SizedBox(width: 16), // Espacio entre los botones
+          _buildApplyButton(),
+        ],
+      ),
     );
   }
 
-  Widget _buildClearButton() {
+  Widget _buildCancelButton() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
-        side: BorderSide(color: Colors.pink),
+        side: const BorderSide(color: Colors.pink),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
+        padding: const EdgeInsets.symmetric(
+            horizontal: 32, vertical: 14), // Aumentar el tamaño
       ),
       onPressed: () {
-        // Lógica para limpiar filtros
+        // Lógica para cancelar
       },
       child: const Text(
-        "Limpiar",
-        style: TextStyle(color: Colors.pink),
+        "Cancelar",
+        style: TextStyle(color: Colors.pink, fontSize: 16),
       ),
     );
   }
@@ -40,13 +45,15 @@ class ActionButtons extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
+        padding: const EdgeInsets.symmetric(
+            horizontal: 32, vertical: 14), // Aumentar el tamaño
       ),
       onPressed: () {
         // Lógica para aplicar filtros
       },
       child: const Text(
         "Aplicar filtros",
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white, fontSize: 16),
       ),
     );
   }

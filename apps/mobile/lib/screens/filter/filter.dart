@@ -72,7 +72,7 @@ class _FilterPageState extends State<FilterPage> {
               ],
               (value) => setState(() => _selectedAge = value),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
             const ActionButtons(),
           ],
         ),
@@ -111,17 +111,18 @@ class _FilterPageState extends State<FilterPage> {
   Widget _buildFilterButton(String text, bool isSelected) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(90, 40), // Ajusta el tamaño de los botones
+        minimumSize: const Size(0, 40), // Ajusta el tamaño de los botones
         backgroundColor: isSelected ? Colors.pink : Colors.white,
         side: BorderSide(color: Colors.grey.shade300),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       ),
       onPressed: () => _handleFilterButtonPressed(text),
       child: Text(
         text,
         style: TextStyle(
           color: isSelected ? Colors.white : Colors.black,
-          fontSize: 14, // Ajuste del tamaño de la fuente
+          fontSize: 14,
         ),
       ),
     );
