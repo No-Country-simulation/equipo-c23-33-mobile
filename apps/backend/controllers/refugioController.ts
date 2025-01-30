@@ -1,63 +1,63 @@
 import { Request, Response } from 'express';
-import { addRefugio, getRefugios, getRefugioById, updateRefugio, deleteRefugio } from '../services/refugioService';
+import { addshelter, getshelters, getshelterById, updateshelter, deleteshelter } from '../services/refugioService';
 
-// Crear un nuevo refugio
-export const createRefugio = async (req: Request, res: Response) => {
+// Crear un nuevo shelter
+export const createshelter = async (req: Request, res: Response) => {
   try {
-    const refugioId = await addRefugio(req.body);
-    res.status(201).json({ id: refugioId });
+    const shelterId = await addshelter(req.body);
+    res.status(201).json({ id: shelterId });
   } catch (error) {
-    console.error('Error al añadir el refugio:', error);
-    res.status(500).json({ error: 'Error al añadir el refugio' });
+    console.error('Error al añadir el shelter:', error);
+    res.status(500).json({ error: 'Error al añadir el shelter' });
   }
 };
 
-// Listar todos los refugios
-export const listRefugios = async (req: Request, res: Response) => {
+// Listar todos los shelters
+export const listshelters = async (req: Request, res: Response) => {
   try {
-    const refugios = await getRefugios();
-    res.status(200).json(refugios);
+    const shelters = await getshelters();
+    res.status(200).json(shelters);
   } catch (error) {
-    console.error('Error al obtener los refugios:', error);
-    res.status(500).json({ error: 'Error al obtener los refugios' });
+    console.error('Error al obtener los shelters:', error);
+    res.status(500).json({ error: 'Error al obtener los shelters' });
   }
 };
 
-// Obtener refugio por ID
-export const getRefugioController = async (req: Request, res: Response) => {
+// Obtener shelter por ID
+export const getshelterController = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const refugio = await getRefugioById(id); // Función en el servicio para obtener por ID
-    if (!refugio) {
-      return res.status(404).json({ error: 'Refugio no encontrado' });
+    const shelter = await getshelterById(id); // Función en el servicio para obtener por ID
+    if (!shelter) {
+      return res.status(404).json({ error: 'shelter no encontrado' });
     }
-    res.status(200).json(refugio);
+    res.status(200).json(shelter);
   } catch (error) {
-    console.error('Error al obtener el refugio:', error);
-    res.status(500).json({ error: 'Error al obtener el refugio' });
+    console.error('Error al obtener el shelter:', error);
+    res.status(500).json({ error: 'Error al obtener el shelter' });
   }
 };
 
-// Actualizar un refugio
-export const updateRefugioController = async (req: Request, res: Response) => {
+// Actualizar un shelter
+export const updateshelterController = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    await updateRefugio(id, req.body);
-    res.status(200).json({ message: 'Refugio actualizado exitosamente' });
+    await updateshelter(id, req.body);
+    res.status(200).json({ message: 'shelter actualizado exitosamente' });
   } catch (error) {
-    console.error('Error al actualizar el refugio:', error);
-    res.status(500).json({ error: 'Error al actualizar el refugio' });
+    console.error('Error al actualizar el shelter:', error);
+    res.status(500).json({ error: 'Error al actualizar el shelter' });
   }
 };
 
-// Eliminar un refugio
-export const deleteRefugioController = async (req: Request, res: Response) => {
+// Eliminar un shelter
+export const deleteshelterController = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    await deleteRefugio(id);
-    res.status(200).json({ message: 'Refugio eliminado exitosamente' });
+    await deleteshelter(id);
+    res.status(200).json({ message: 'shelter eliminado exitosamente' });
   } catch (error) {
-    console.error('Error al eliminar el refugio:', error);
-    res.status(500).json({ error: 'Error al eliminar el refugio' });
+    console.error('Error al eliminar el shelter:', error);
+    res.status(500).json({ error: 'Error al eliminar el shelter' });
   }
 };

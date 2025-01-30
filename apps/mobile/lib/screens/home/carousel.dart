@@ -140,7 +140,7 @@ class PetCard extends StatelessWidget {
                   children: [
                     Text('Tipo: $type'),
                     const SizedBox(width: 16),
-                    Text('Edad: $age'),
+                    Text('age: $age'),
                   ],
                 ),
                 const SizedBox(height: 4),

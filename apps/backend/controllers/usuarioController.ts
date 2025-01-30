@@ -1,4 +1,4 @@
-import bcrypt from 'bcryptjs';
+
 import { Request, Response } from 'express';
 import { 
   addUsuario, 
@@ -8,29 +8,6 @@ import {
   deleteUsuarioService 
 } from '../services/usuarioService';
 
-// Endpoint de login
-export const loginUsuario = async (req: Request, res: Response) => {
-  try {
-    const { email, contraseña } = req.body;
-
-    // Buscar usuario por email
-    const usuario = await getUsuarioById(email);
-    if (!usuario) {
-      return res.status(404).json({ error: 'Usuario no encontrado' });
-    }
-
-    // Verificar la contraseña
-    const esCorrecta = bcrypt.compareSync(contraseña, usuario.contraseña);
-    if (!esCorrecta) {
-      return res.status(401).json({ error: 'Contraseña incorrecta' });
-    }
-
-    res.json({ message: 'Login exitoso', usuario });
-  } catch (error) {
-    console.error('Error en el login:', error);
-    res.status(500).json({ error: 'Error en el login' });
-  }
-};
 
 // Crear nuevo usuario
 export const createUsuario = async (req: Request, res: Response) => {

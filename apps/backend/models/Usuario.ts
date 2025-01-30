@@ -2,42 +2,42 @@ import bcrypt from 'bcryptjs';
 
 export interface IUsuario {
   id_user?: string;
-  nombre: string;
+  name: string;
   email: string;
   contraseña: string;
-  rol: 'Persona interesada' | 'Refugio' | 'Administrador';
-  creadoEn: Date;
+  rol: 'Persona interesada' | 'shelter' | 'Administrador';
+  created_at: Date;
 }
 
 export class Usuario {
   id_user?: string;
-  nombre: string;
+  name: string;
   email: string;
   contraseña: string;
-  rol: 'Persona interesada' | 'Refugio' | 'Administrador';
-  creadoEn: Date;
+  rol: 'Persona interesada' | 'shelter' | 'Administrador';
+  created_at: Date;
 
   constructor(data: IUsuario) {
-    if (!data.nombre || !data.email || !data.contraseña || !data.rol) {
-      throw new Error("Faltan datos obligatorios: nombre, email, contraseña o rol");
+    if (!data.name || !data.email || !data.contraseña || !data.rol) {
+      throw new Error("Faltan datos obligatorios: name, email, contraseña o rol");
     }
 
     this.id_user = data.id_user;
-    this.nombre = data.nombre;
+    this.name = data.name;
     this.email = data.email;
     this.contraseña = bcrypt.hashSync(data.contraseña, 10);  // Esto Encripta la contraseña
     this.rol = data.rol;
-    this.creadoEn = data.creadoEn ?? new Date();  // Si no hay fecha, usa la actual
+    this.created_at = data.created_at ?? new Date();  // Si no hay fecha, usa la actual
   }
 
   toFirestore(): Omit<IUsuario, 'id_user'> {
     return Object.fromEntries(
       Object.entries({
-        nombre: this.nombre,
+        name: this.name,
         email: this.email,
         contraseña: this.contraseña,
         rol: this.rol,
-        creadoEn: this.creadoEn,
+        created_at: this.created_at,
       }).filter(([_, v]) => v !== undefined) // Elimina valores undefined
     ) as Omit<IUsuario, 'id_user'>;
   }

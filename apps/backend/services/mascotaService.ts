@@ -1,22 +1,22 @@
 import { db } from '../config/firebaseConfig';
-import { IMascota, Mascota } from '../models/Mascota';
+import { Pets, pet } from '../models/Mascota';
 
 // Agregar una nueva mascota
-export const addMascota = async (mascotaData: IMascota): Promise<string> => {
-  const nuevaMascota = new Mascota(mascotaData);
-  const docRef = await db.collection('mascotas').add(nuevaMascota.toFirestore());
+export const addMascota = async (mascotaData: Pets): Promise<string> => {
+  const nuevaMascota = new pet(mascotaData);
+  const docRef = await db.collection('pets').add(nuevaMascota.toFirestore());
   return docRef.id;
 };
 
 // Obtener una mascota por ID
-export const getMascotaById = async (id: string): Promise<IMascota | null> => {
-  const doc = await db.collection('mascotas').doc(id).get();
-  return doc.exists ? { id: doc.id, ...doc.data() as IMascota } : null;
+export const getMascotaById = async (id: string): Promise<Pets | null> => {
+  const doc = await db.collection('pets').doc(id).get();
+  return doc.exists ? { id: doc.id, ...doc.data() as Pets } : null;
 };
 
 // Obtener todas las mascotas con filtros
-export const getMascotas = async (filtros: Partial<IMascota>): Promise<IMascota[]> => {
-  let queryRef = db.collection('mascotas') as FirebaseFirestore.Query;
+export const getMascotas = async (filtros: Partial<Pets>): Promise<Pets[]> => {
+  let queryRef = db.collection('pets') as FirebaseFirestore.Query;
 
   Object.entries(filtros).forEach(([key, value]) => {
     if (value !== undefined) {
@@ -25,12 +25,12 @@ export const getMascotas = async (filtros: Partial<IMascota>): Promise<IMascota[
   });
 
   const snapshot = await queryRef.get();
-  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() as IMascota }));
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() as Pets }));
 };
 
 // Actualizar mascota
-export const updateMascotaService = async (id: string, data: Partial<IMascota>): Promise<boolean> => {
-  const docRef = db.collection('mascotas').doc(id);
+export const updateMascotaService = async (id: string, data: Partial<Pets>): Promise<boolean> => {
+  const docRef = db.collection('pets').doc(id);
   const doc = await docRef.get();
 
   if (!doc.exists) return false;
@@ -41,7 +41,7 @@ export const updateMascotaService = async (id: string, data: Partial<IMascota>):
 
 // Eliminar mascota
 export const deleteMascotaService = async (id: string): Promise<boolean> => {
-  const docRef = db.collection('mascotas').doc(id);
+  const docRef = db.collection('pets').doc(id);
   const doc = await docRef.get();
 
   if (!doc.exists) return false;

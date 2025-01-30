@@ -11,7 +11,7 @@ class CategoryFilter extends StatelessWidget {
         _buildFilterButton("Gato"),
         _buildFilterButton("Perro", isSelected: true),
         _buildFilterButton("Otros"),
-        _buildFilterButton("Refugio"),
+        _buildFilterButton("shelter"),
       ],
     );
   }
@@ -23,7 +23,7 @@ class GenderFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _buildFilterSection(
-      "Sexo",
+      "sex",
       [
         _buildFilterButton("Hembra", isSelected: true),
         _buildFilterButton("Macho"),
@@ -39,7 +39,7 @@ class SizeFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _buildFilterSection(
-      "Tamaño",
+      "size",
       [
         _buildFilterButton("Pequeño"),
         _buildFilterButton("Mediano", isSelected: true),
@@ -55,7 +55,7 @@ class AgeFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _buildFilterSection(
-      "Edad",
+      "age",
       [
         _buildFilterButton("0-3", isSelected: true),
         _buildFilterButton("3-5"),

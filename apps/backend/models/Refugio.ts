@@ -1,52 +1,52 @@
-export interface IRefugio {
+export interface Ishelter {
   id?: string;
-  nombre: string;
-  direccion: string;
-  telefono: string;
-  correoElectronico: string; // Agregado
-  estadoSaludAceptado: 'Saludable' | 'Enfermo' | 'Recuperación'; // Agregado
-  capacidadMascota: number; // Agregado
-  idUsuario: string; // FK de usuario
-  idAdmin: string; // FK de admin
-  creadoEn: string; // Fecha de creación
+  name: string;
+  address: string;
+  phone: string;
+  email: string; // Agregado
+  accepted_health_condition: 'Saludable' | 'Enfermo' | 'Recuperación'; // Agregado
+  pet_capacity: number; // Agregado
+  id_user: string; // FK de usuario
+  id_admin: string; // FK de admin
+  created_at: string; // Fecha de creación
 }
 
-export class Refugio {
+export class shelter {
   id?: string;
-  nombre: string;
-  direccion: string;
-  telefono: string;
-  correoElectronico: string; // Agregado
-  estadoSaludAceptado: 'Saludable' | 'Enfermo' | 'Recuperación'; // Agregado
-  capacidadMascota: number; // Agregado
-  idUsuario: string; // FK de usuario
-  idAdmin: string; // FK de admin
-  creadoEn: string; // Fecha de creación
+  name: string;
+  address: string;
+  phone: string;
+  email: string; // Agregado
+  accepted_health_condition: 'Saludable' | 'Enfermo' | 'Recuperación'; // Agregado
+  pet_capacity: number; // Agregado
+  id_user: string; // FK de usuario
+  id_admin: string; // FK de admin
+  created_at: string; // Fecha de creación
 
-  constructor(data: IRefugio) {
+  constructor(data: Ishelter) {
     this.id = data.id;
-    this.nombre = data.nombre;
-    this.direccion = data.direccion;
-    this.telefono = data.telefono;
-    this.correoElectronico = data.correoElectronico;
-    this.estadoSaludAceptado = data.estadoSaludAceptado;
-    this.capacidadMascota = data.capacidadMascota;
-    this.idUsuario = data.idUsuario;
-    this.idAdmin = data.idAdmin;
-    this.creadoEn = data.creadoEn;
+    this.name = data.name;
+    this.address = data.address;
+    this.phone = data.phone;
+    this.email = data.email;
+    this.accepted_health_condition = data.accepted_health_condition;
+    this.pet_capacity = data.pet_capacity;
+    this.id_user = data.id_user;
+    this.id_admin = data.id_admin;
+    this.created_at = data.created_at;
   }
 
-  toFirestore(): Omit<IRefugio, 'id'> {
+  toFirestore(): Omit<Ishelter, 'id'> {
     return {
-      nombre: this.nombre,
-      direccion: this.direccion,
-      telefono: this.telefono,
-      correoElectronico: this.correoElectronico,
-      estadoSaludAceptado: this.estadoSaludAceptado,
-      capacidadMascota: this.capacidadMascota,
-      idUsuario: this.idUsuario,
-      idAdmin: this.idAdmin,
-      creadoEn: this.creadoEn,
+      name: this.name,
+      address: this.address,
+      phone: this.phone,
+      email: this.email,
+      accepted_health_condition: this.accepted_health_condition,
+      pet_capacity: this.pet_capacity,
+      id_user: this.id_user,
+      id_admin: this.id_admin,
+      created_at: this.created_at,
     };
   }
 }

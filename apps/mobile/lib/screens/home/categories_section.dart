@@ -47,9 +47,9 @@ class CategoriesSection extends StatelessWidget {
             ),
             _buildCategoryCard(
               context,
-              title: 'Refugios',
+              title: 'shelters',
               color: const Color.fromRGBO(82, 191, 113, 1),
-              image: 'assets/images/Refugios1_categorias.png',
+              image: 'assets/images/shelters1_categorias.png',
             ),
           ],
         ),

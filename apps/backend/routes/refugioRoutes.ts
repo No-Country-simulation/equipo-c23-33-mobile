@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { 
-  createRefugio, 
-  listRefugios, 
-  updateRefugioController, 
-  deleteRefugioController,
-  getRefugioController 
+  createshelter, 
+  listshelters, 
+  updateshelterController, 
+  deleteshelterController,
+  getshelterController 
 } from '../controllers/refugioController';
 
 const router = Router();
@@ -14,10 +14,10 @@ const asyncHandler = (fn: Function) => (req: any, res: any, next: any) => {
   Promise.resolve(fn(req, res, next)).catch(next);
 };
 
-router.post('/', asyncHandler(createRefugio));
-router.get('/', asyncHandler(listRefugios));
-router.get('/:id', asyncHandler(getRefugioController)); // Obtener refugio por ID
-router.put('/:id', asyncHandler(updateRefugioController)); // Actualizar refugio
-router.delete('/:id', asyncHandler(deleteRefugioController)); // Eliminar refugio
+router.post('/', asyncHandler(createshelter));
+router.get('/', asyncHandler(listshelters));
+router.get('/:id', asyncHandler(getshelterController)); // Obtener shelter por ID
+router.put('/:id', asyncHandler(updateshelterController)); // Actualizar shelter
+router.delete('/:id', asyncHandler(deleteshelterController)); // Eliminar shelter
 
 export default router;
