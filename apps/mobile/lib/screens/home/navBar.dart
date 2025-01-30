@@ -12,7 +12,6 @@ class NavBar extends StatefulWidget {
 
 class _NavbarState extends State<NavBar> {
   int _selectedIndex = 0;
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -134,15 +133,3 @@ class MascotasPage extends StatelessWidget {
     );
   }
 }
-
-// class PerfilPage extends StatelessWidget {
-//   const PerfilPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: const Text("Perfil")),
-//       body: const Center(child: Text("Página de Perfil")),
-//     );
-//   }
-// }
