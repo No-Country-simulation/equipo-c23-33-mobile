@@ -38,14 +38,22 @@ Widget _buildDropdownFilter(
       const SizedBox(height: 8),
       DropdownButtonFormField<String>(
         decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: const BorderSide(color: Colors.grey),
+          ),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         ),
         items: options
-            .map((option) =>
-                DropdownMenuItem(value: option, child: Text(option)))
+            .map((option) => DropdownMenuItem(
+                  value: option,
+                  child: Text(option),
+                ))
             .toList(),
         onChanged: (_) {},
-        hint: Text("Seleccionar $label.toLowerCase()"),
+        hint: Text("Seleccionar ${label.toLowerCase()}"),
+        style: const TextStyle(fontSize: 16, color: Colors.black),
       ),
     ],
   );
