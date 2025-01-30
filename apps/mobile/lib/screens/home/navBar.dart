@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/profile/profile.dart';
+import 'package:mobile/screens/profile/profile_personas.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
