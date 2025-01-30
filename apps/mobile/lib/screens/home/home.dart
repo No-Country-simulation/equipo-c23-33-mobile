@@ -1,7 +1,7 @@
 // home.dart
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/home/appbar_home.dart';
-import 'package:mobile/screens/home/carousel.dart';
+import 'package:mobile/screens/home/navBar.dart';
 import 'package:mobile/screens/home/welcome_card.dart';
 import 'package:mobile/screens/home/categories_section.dart';
 
@@ -24,14 +24,10 @@ class _HomeState extends State<Home> {
             const WelcomeCard(),
             const CategoriesSection(),
             const SizedBox(height: 16),
-            SizedBox(
-              height: 314,
-              child: const Carousel(),
-            ),
-            const SizedBox(height: 16),
           ],
         ),
       ),
+      bottomNavigationBar: const NavBar(),
     );
   }
 }

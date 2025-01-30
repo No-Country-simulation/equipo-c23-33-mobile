@@ -3,7 +3,8 @@ import 'package:firebase_core/firebase_core.dart'; // Importa firebase_core
 import 'package:mobile/screens/login_screen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Asegura la inicialización antes de ejecutar Firebase
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Asegura la inicialización antes de ejecutar Firebase
   await Firebase.initializeApp(); // Inicializa Firebase
   runApp(const MyApp());
 }
