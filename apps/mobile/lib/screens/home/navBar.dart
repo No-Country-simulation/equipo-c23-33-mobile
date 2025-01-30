@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/profile/profile_personas.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -9,11 +10,17 @@ class NavBar extends StatefulWidget {
 
 class _NavbarState extends State<NavBar> {
   int _selectedIndex = 0;
-
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 3) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Profile()),
+      );
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   }
 
   @override
