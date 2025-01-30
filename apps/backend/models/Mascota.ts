@@ -7,7 +7,7 @@ export interface IMascota {
   estadoSalud: string;  // Estado de salud (Saludable, Enfermo, Recuperación)
   fotoURL: string;
   idRefugio: string;
-  criar: boolean;       // Indica si la mascota es una cría
+  raza: string;       // Indica si la mascota es una cría
   sexo: string;         // Sexo de la mascota (Macho/Hembra)
   refugio: string;      // Nombre del refugio
   creadoEn: Date;       // Fecha de creación de la mascota
@@ -22,7 +22,7 @@ export class Mascota {
   estadoSalud: string;  // Estado de salud (Saludable, Enfermo, Recuperación)
   fotoURL: string;
   idRefugio: string;
-  criar: boolean;       // Indica si la mascota es una cría
+  raza: string;       // Indica la raza
   sexo: string;         // Sexo de la mascota (Macho/Hembra)
   refugio: string;      // Nombre del refugio
   creadoEn: Date;       // Fecha de creación de la mascota
@@ -36,7 +36,7 @@ export class Mascota {
     this.estadoSalud = data.estadoSalud;
     this.fotoURL = data.fotoURL;
     this.idRefugio = data.idRefugio;
-    this.criar = data.criar;
+    this.raza = data.raza;
     this.sexo = data.sexo;
     this.refugio = data.refugio;
     this.creadoEn = data.creadoEn;
@@ -51,7 +51,7 @@ export class Mascota {
       estadoSalud: this.estadoSalud,
       fotoURL: this.fotoURL,
       idRefugio: this.idRefugio,
-      criar: this.criar,
+      raza: this.raza,
       sexo: this.sexo,
       refugio: this.refugio,
       creadoEn: this.creadoEn,
