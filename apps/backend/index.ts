@@ -1,8 +1,9 @@
 import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import mascotaRoutes from './routes/mascotaRoutes';
-import refugioRoutes from './routes/refugioRoutes';
+
 import usuarioRoutes from './routes/usuarioRoute';
+import refugioRoutes from './routes/refugioRoutes';
 dotenv.config();
 
 const app = express();
@@ -12,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use('/pets', mascotaRoutes);
 app.use('/shelters', refugioRoutes);
-app.use('/user',usuarioRoutes);
+app.use('/users',usuarioRoutes);
 
 // Middleware para manejar errores (IMPORTANTE)
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

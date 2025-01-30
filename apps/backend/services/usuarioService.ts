@@ -1,13 +1,10 @@
-import bcrypt from 'bcryptjs'
+
 import { db } from '../config/firebaseConfig';
 import { IUsuario, Usuario } from '../models/Usuario';
 
 // Agregar un nuevo usuario
 export const addUsuario = async (usuarioData: IUsuario): Promise<string> => {
-  // Encriptamos la contraseña antes de guardar
-  const salt = bcrypt.genSaltSync(10);
-  usuarioData.contraseña = bcrypt.hashSync(usuarioData.contraseña, salt);
-
+  
   const nuevoUsuario = new Usuario(usuarioData);
   const docRef = await db.collection('user').add(nuevoUsuario.toFirestore());
   return docRef.id;
