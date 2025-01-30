@@ -21,7 +21,13 @@ class _FilterPageState extends State<FilterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Filtros: ${widget.category}"),
+        title: const Text(
+          "Filtros",
+          style: TextStyle(
+            fontWeight: FontWeight.bold, // Texto en negrita
+          ),
+        ),
+        centerTitle: true, // Centrar el título del AppBar
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
