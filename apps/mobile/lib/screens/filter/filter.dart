@@ -21,7 +21,13 @@ class FilterPageState extends State<FilterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Filtros: ${widget.especie}"),
+        title: const Text(
+          "Filtros",
+          style: TextStyle(
+            fontWeight: FontWeight.bold, 
+          ),
+        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

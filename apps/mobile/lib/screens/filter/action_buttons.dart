@@ -9,7 +9,7 @@ class ActionButtons extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center, // Centrar los botones
         children: [
-          _buildCancelButton(),
+          _buildCancelButton(context), // Pasamos el contexto aquí
           const SizedBox(width: 16), // Espacio entre los botones
           _buildApplyButton(),
         ],
@@ -17,7 +17,7 @@ class ActionButtons extends StatelessWidget {
     );
   }
 
-  Widget _buildCancelButton() {
+  Widget _buildCancelButton(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
@@ -29,7 +29,8 @@ class ActionButtons extends StatelessWidget {
             horizontal: 32, vertical: 14), // Aumentar el tamaño
       ),
       onPressed: () {
-        // Lógica para cancelar
+        // Navegar de regreso a la pantalla anterior (Home)
+        Navigator.pop(context);
       },
       child: const Text(
         "Cancelar",
