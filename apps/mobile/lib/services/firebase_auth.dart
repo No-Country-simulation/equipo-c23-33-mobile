@@ -5,8 +5,7 @@ import 'package:mobile/screens/home/home.dart';
 class FirebaseAuthService {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  static Future<void> loginUser(
-      BuildContext context, String email, String password) async {
+  static Future<void> loginUser(BuildContext context, String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
 
@@ -17,12 +16,14 @@ class FirebaseAuthService {
         );
       }
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        _showSnackBar(context, 'Usuario no encontrado. Intente registrarse.');
-      } else if (e.code == 'wrong-password') {
-        _showSnackBar(context, 'Contraseña incorrecta.');
-      } else {
-        _showSnackBar(context, 'Error: ${e.message}');
+      if (context.mounted) {
+        if (e.code == 'user-not-found') {
+          _showSnackBar(context, 'Usuario no encontrado. Intente registrarse.');
+        } else if (e.code == 'wrong-password') {
+          _showSnackBar(context, 'Contraseña incorrecta.');
+        } else {
+          _showSnackBar(context, 'Error: ${e.message}');
+        }
       }
     }
   }
@@ -61,7 +62,9 @@ class FirebaseAuthService {
         default:
           errorMessage = 'Ocurrió un error. Intente nuevamente.';
       }
-      _showSnackBar(context, errorMessage);
+      if (context.mounted) {
+        _showSnackBar(context, errorMessage);
+      }
     }
   }
 

@@ -1,4 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/home/profile.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -14,6 +17,36 @@ class _NavbarState extends State<NavBar> {
     setState(() {
       _selectedIndex = index;
     });
+
+    // Navegar a la página correspondiente
+    switch (index) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ChatsPage()),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const MascotasPage()),
+        );
+        break;
+      case 3:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const PerfilPage()),
+        );
+        break;
+      default:
+        break;
+    }
   }
 
   @override
@@ -64,3 +97,52 @@ class _NavbarState extends State<NavBar> {
     );
   }
 }
+
+// Aquí van las pantallas correspondientes
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Home")),
+      body: const Center(child: Text("Página de Inicio")),
+    );
+  }
+}
+
+class ChatsPage extends StatelessWidget {
+  const ChatsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Chats")),
+      body: const Center(child: Text("Página de Chats")),
+    );
+  }
+}
+
+class MascotasPage extends StatelessWidget {
+  const MascotasPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Mascotas")),
+      body: const Center(child: Text("Página de Mascotas")),
+    );
+  }
+}
+
+// class PerfilPage extends StatelessWidget {
+//   const PerfilPage({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: const Text("Perfil")),
+//       body: const Center(child: Text("Página de Perfil")),
+//     );
+//   }
+// }

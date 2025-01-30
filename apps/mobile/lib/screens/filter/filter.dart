@@ -3,15 +3,15 @@ import 'dropdown_filters.dart';
 import 'action_buttons.dart';
 
 class FilterPage extends StatefulWidget {
-  final String category;
+  final String especie;
 
-  const FilterPage({super.key, required this.category});
+  const FilterPage({super.key, required this.especie});
 
   @override
-  _FilterPageState createState() => _FilterPageState();
+  FilterPageState createState() => FilterPageState();
 }
 
-class _FilterPageState extends State<FilterPage> {
+class FilterPageState extends State<FilterPage> {
   String _selectedCategory = "Perro";
   String _selectedGender = "Hembra";
   String _selectedSize = "Mediano";
@@ -21,7 +21,7 @@ class _FilterPageState extends State<FilterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Filtros: ${widget.category}"),
+        title: Text("Filtros: ${widget.especie}"),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

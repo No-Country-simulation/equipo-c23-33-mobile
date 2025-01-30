@@ -34,6 +34,23 @@ class WelcomeCard extends StatelessWidget {
               'https://i.ibb.co/PmBV8zY/Imagen3.png',
               fit: BoxFit.contain,
               color: Colors.white.withAlpha(77), // alpha = opacidad * 255 -> 0.3 * 255 =  76,5 (77)
+              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              (loadingProgress.expectedTotalBytes ?? 1)
+                          : null,
+                    ),
+                  );
+                }
+              },
+              errorBuilder: (context, error, stackTrace) {
+                return const Icon(Icons.error);
+              },
             ),
           ),
 
@@ -47,12 +64,22 @@ class WelcomeCard extends StatelessWidget {
               child: Image.network(
                 'https://i.ibb.co/b5dK2fk/tarjeta111.png',
                 fit: BoxFit.contain,
+                loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                (loadingProgress.expectedTotalBytes ?? 1)
+                            : null,
+                      ),
+                    );
+                  }
+                },
                 errorBuilder: (context, error, stackTrace) {
-                  return const Icon(
-                    Icons.pets,
-                    size: 90,
-                    color: Colors.white54,
-                  );
+                  return const Icon(Icons.error);
                 },
               ),
             ),
@@ -88,7 +115,7 @@ class WelcomeCard extends StatelessWidget {
                 Container(
                   height: 48,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.white.withAlpha(230), // alpha = opacidad * 255 -> 0.9 * 255 =  229,5 (230)
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
@@ -115,7 +142,7 @@ class WelcomeCard extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    const FilterPage(category: ("Filtro")),
+                                    const FilterPage(especie: "Perro"),
                               ),
                             );
                           },
