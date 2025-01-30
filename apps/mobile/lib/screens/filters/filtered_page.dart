@@ -8,24 +8,24 @@ import 'animal_card.dart';
 import 'perfil_mascota.dart';
 
 class FilteredPage extends StatelessWidget {
-  final String especie;
+  final String type;
   final List<Map<String, String>> animals;
 
   const FilteredPage({
     super.key,
-    required this.especie,
+    required this.type,
     required this.animals,
   });
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> filteredAnimals = especie == "all"
+    List<Map<String, String>> filteredAnimals = type == "all"
         ? animals
-        : animals.where((animal) => animal['type'] == especie).toList();
+        : animals.where((animal) => animal['type'] == type).toList();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(especie),
+        title: Text(type),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8),
@@ -34,7 +34,7 @@ class FilteredPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => FilterPage(especie: especie),
+                    builder: (context) => FilterPage(type: type),
                   ),
                 );
               },

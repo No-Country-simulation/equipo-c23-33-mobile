@@ -3,9 +3,9 @@ import 'dropdown_filters.dart';
 import 'action_buttons.dart';
 
 class FilterPage extends StatefulWidget {
-  final String especie;
+  final String type;
 
-  const FilterPage({super.key, required this.especie});
+  const FilterPage({super.key, required this.type});
 
   @override
   FilterPageState createState() => FilterPageState();
@@ -21,13 +21,7 @@ class FilterPageState extends State<FilterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Filtros",
-          style: TextStyle(
-            fontWeight: FontWeight.bold, 
-          ),
-        ),
-        centerTitle: true,
+        title: Text("Filtros: ${widget.type}"),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

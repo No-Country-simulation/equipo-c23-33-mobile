@@ -58,7 +58,7 @@ class Allmascotas extends StatelessWidget {
 
           return Scaffold(
             body: FilteredPage(
-              especie: type,
+              type: type,
               animals: animals,
             ),
           );
