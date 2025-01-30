@@ -3,15 +3,15 @@ import 'dropdown_filters.dart';
 import 'action_buttons.dart';
 
 class FilterPage extends StatefulWidget {
-  final String category;
+  final String especie;
 
-  const FilterPage({super.key, required this.category});
+  const FilterPage({super.key, required this.especie});
 
   @override
-  _FilterPageState createState() => _FilterPageState();
+  FilterPageState createState() => FilterPageState();
 }
 
-class _FilterPageState extends State<FilterPage> {
+class FilterPageState extends State<FilterPage> {
   String _selectedCategory = "Perro";
   String _selectedGender = "Hembra";
   String _selectedSize = "Mediano";
@@ -24,10 +24,10 @@ class _FilterPageState extends State<FilterPage> {
         title: const Text(
           "Filtros",
           style: TextStyle(
-            fontWeight: FontWeight.bold, // Texto en negrita
+            fontWeight: FontWeight.bold, 
           ),
         ),
-        centerTitle: true, // Centrar el título del AppBar
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

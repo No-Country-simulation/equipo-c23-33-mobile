@@ -9,6 +9,6 @@ export const addRefugio = async (refugioData: Refugio) => {
 };  
 
 export const getRefugios = async () => {  
-  const snapshot = await db.collection('refugios').get();  
+  const snapshot = await db.collection('Shelter').get();  
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));  
 };
