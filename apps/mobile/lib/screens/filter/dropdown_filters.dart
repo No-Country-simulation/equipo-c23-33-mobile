@@ -18,8 +18,8 @@ class BreedFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _buildDropdownFilter(
-      "Raza",
-      ["Raza 1", "Raza 2"],
+      "breed",
+      ["breed 1", "breed 2"],
     );
   }
 }

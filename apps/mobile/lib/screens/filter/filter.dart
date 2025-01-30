@@ -35,7 +35,7 @@ class _FilterPageState extends State<FilterPage> {
                 _buildFilterButton("Gato", _selectedCategory == "Gato"),
                 _buildFilterButton("Perro", _selectedCategory == "Perro"),
                 _buildFilterButton("Otros", _selectedCategory == "Otros"),
-                _buildFilterButton("Refugio", _selectedCategory == "Refugio"),
+                _buildFilterButton("shelter", _selectedCategory == "shelter"),
               ],
               (value) => setState(() => _selectedCategory = value),
             ),
@@ -45,7 +45,7 @@ class _FilterPageState extends State<FilterPage> {
             const BreedFilter(),
             const SizedBox(height: 16),
             _buildFilterSection(
-              "Sexo",
+              "sex",
               [
                 _buildFilterButton("Hembra", _selectedGender == "Hembra"),
                 _buildFilterButton("Macho", _selectedGender == "Macho"),
@@ -55,7 +55,7 @@ class _FilterPageState extends State<FilterPage> {
             ),
             const SizedBox(height: 16),
             _buildFilterSection(
-              "Tamaño",
+              "size",
               [
                 _buildFilterButton("Pequeño", _selectedSize == "Pequeño"),
                 _buildFilterButton("Mediano", _selectedSize == "Mediano"),
@@ -65,7 +65,7 @@ class _FilterPageState extends State<FilterPage> {
             ),
             const SizedBox(height: 16),
             _buildFilterSection(
-              "Edad",
+              "age",
               [
                 _buildFilterButton("0-3", _selectedAge == "0-3"),
                 _buildFilterButton("3-5", _selectedAge == "3-5"),
@@ -112,7 +112,7 @@ class _FilterPageState extends State<FilterPage> {
   Widget _buildFilterButton(String text, bool isSelected) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(90, 40), // Ajusta el tamaño de los botones
+        minimumSize: const Size(90, 40), // Ajusta el size de los botones
         backgroundColor: isSelected ? Colors.pink : Colors.white,
         side: BorderSide(color: Colors.grey.shade300),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -122,7 +122,7 @@ class _FilterPageState extends State<FilterPage> {
         text,
         style: TextStyle(
           color: isSelected ? Colors.white : Colors.black,
-          fontSize: 14, // Ajuste del tamaño de la fuente
+          fontSize: 14, // Ajuste del size de la fuente
         ),
       ),
     );
@@ -136,8 +136,8 @@ class _FilterPageState extends State<FilterPage> {
         _selectedCategory = "Perro";
       } else if (value == "Otros") {
         _selectedCategory = "Otros";
-      } else if (value == "Refugio") {
-        _selectedCategory = "Refugio";
+      } else if (value == "shelter") {
+        _selectedCategory = "shelter";
       } else if (value == "Hembra") {
         _selectedGender = "Hembra";
       } else if (value == "Macho") {

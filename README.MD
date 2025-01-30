@@ -49,7 +49,7 @@ C23-33 Mobile/
 ### Estrategia de trabajo
 
 - **Pull Requests**: Todos los miembros deben realizar un pull request para realizar cambios en el repositorio.
-- **Ramas dedicadas**: Crear ramas para cada feature, fix o tarea con nombres descriptivos, como `feature/login` o `fix/typo-header`.
+- **Ramas dedicadas**: Crear ramas para cada feature, fix o tarea con names descriptivos, como `feature/login` o `fix/typo-header`.
 
 #### Buenas prácticas al trabajar con Git
 

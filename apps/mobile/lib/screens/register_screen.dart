@@ -22,7 +22,7 @@ class RegisterForm extends StatelessWidget {
           children: [
             TextField(
               decoration: const InputDecoration(
-                labelText: 'Nombre',
+                labelText: 'name',
                 border: OutlineInputBorder(),
               ),
             ),
