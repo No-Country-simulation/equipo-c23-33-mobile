@@ -73,14 +73,16 @@ class _PetProfileState extends State<PetProfile> {
                 child: const Icon(Icons.pets, color: Colors.grey),
               ),
               title: const Text('Publicado por'),
-              subtitle: Text(animal?['shelter'] ?? 'Desconocido'),
+              // subtitle: Text(animal?['shelter'] ?? 'Desconocido'),
+              subtitle: Text('Desconocido'),
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => ShelterProfile(
-                      shelterName: animal?['shelter'] ?? 'Desconocido',
+                      // shelterName: animal?['shelter'] ?? 'Desconocido',
+                      shelterName:'Desconocido',
                       followers: 4500,
                       posts: 15,
                       recentAnimals: [

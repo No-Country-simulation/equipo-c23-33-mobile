@@ -20,87 +20,181 @@ class ShelterProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Perfil'),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () {},
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(80),
+        child: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          centerTitle: true,
+          title: const Padding(
+            padding: EdgeInsets.only(top: 20),
+            child: Text(
+              "Perfil",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
           ),
-        ],
+          leading: Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: IconButton(
+                icon: const Icon(Icons.notifications_outlined,
+                    color: Colors.black),
+                onPressed: () {},
+              ),
+            ),
+          ],
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(1),
+            child: Container(
+              color: Colors.grey[300],
+              height: 1,
+            ),
+          ),
+        ),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Header
-            Center(
+      body: Column(
+        children: [
+          const SizedBox(height: 20),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 5,
+                  spreadRadius: 1,
+                ),
+              ],
+            ),
+            child: Column(
+              children: [
+                const CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage("assets/images/logo_perfil.png"),
+                  backgroundColor: Colors.transparent,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  shelterName,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _InfoStat(label: "Seguidores", value: "$followers"),
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 30),
+                      height: 30,
+                      width: 1,
+                      color: Colors.grey,
+                    ),
+                    _InfoStat(label: "Publicaciones", value: "$posts"),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          Expanded(
+            child: DefaultTabController(
+              length: 2,
               child: Column(
                 children: [
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundColor: Colors.grey[200],
-                    child: const Icon(Icons.pets, size: 50, color: Colors.grey),
-                  ),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    shelterName,
-                    style: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[100],
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    child: TabBar(
+                      indicator: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      labelColor: Colors.red,
+                      unselectedLabelColor: Colors.black54,
+                      labelStyle: const TextStyle(fontWeight: FontWeight.bold),
+                      tabs: const [
+                        Tab(text: "Publicaciones"),
+                        Tab(text: "Perfil"),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 8.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _InfoStat(label: 'Seguidores', value: followers.toString()),
-                      const SizedBox(width: 16.0),
-                      _InfoStat(label: 'Publicaciones', value: posts.toString()),
-                    ],
+                  const SizedBox(height: 10),
+                  Expanded(
+                    child: TabBarView(
+                      children: [
+                        _buildPublicaciones(),
+                        _buildPerfil(),
+                      ],
+                    ),
                   ),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),
-            const SizedBox(height: 16.0),
+          ),
+        ],
+      ),
+    );
+  }
 
-            // Tabs
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _TabButton(label: 'Publicaciones', isSelected: true, onTap: () {}),
-                _TabButton(label: 'Perfil', isSelected: false, onTap: () {}),
-              ],
-            ),
-            const SizedBox(height: 16.0),
-
-            // Recent animals
-            const Text(
-              'Recientes',
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 8.0),
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
-                childAspectRatio: 0.8,
-              ),
-              itemCount: recentAnimals.length,
-              itemBuilder: (context, index) {
-                return recentAnimals[index];
-              },
-            ),
-          ],
+  Widget _buildPublicaciones() {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          childAspectRatio: 0.8,
         ),
+        itemCount: recentAnimals.length,
+        itemBuilder: (context, index) {
+          return recentAnimals[index];
+        },
+      ),
+    );
+  }
+
+  Widget _buildPerfil() {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Sobre $shelterName",
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Text(
+            "Somos un refugio comprometido con el bienestar animal y la búsqueda de un hogar para cada mascota. Nuestro objetivo es encontrar la mejor familia para cada uno de nuestros rescatados y fomentar la adopción responsable.",
+            style: TextStyle(fontSize: 16, color: Colors.black87),
+          ),
+        ],
       ),
     );
   }
@@ -128,39 +222,6 @@ class _InfoStat extends StatelessWidget {
           style: const TextStyle(fontSize: 14.0, color: Colors.grey),
         ),
       ],
-    );
-  }
-}
-
-class _TabButton extends StatelessWidget {
-  final String label;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  const _TabButton({
-    required this.label,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.0),
-          color: isSelected ? Colors.pink : Colors.grey[200],
-        ),
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: 16.0,
-            color: isSelected ? Colors.white : Colors.black,
-          ),
-        ),
-      ),
     );
   }
 }
