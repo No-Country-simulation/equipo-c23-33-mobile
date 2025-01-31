@@ -3,9 +3,9 @@ import 'dropdown_filters.dart';
 import 'action_buttons.dart';
 
 class FilterPage extends StatefulWidget {
-  final String especie;
+  final String type;
 
-  const FilterPage({super.key, required this.especie});
+  const FilterPage({super.key, required this.type});
 
   @override
   FilterPageState createState() => FilterPageState();

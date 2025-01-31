@@ -118,7 +118,11 @@ class _CategoriesSectionState extends State<CategoriesSection> {
             context,
             MaterialPageRoute(
               builder: (context) =>
+<<<<<<< HEAD
                   FilteredPage(especie: title, animals: animals),
+=======
+                  FilteredPage(type: title, animals: animals),
+>>>>>>> 102bde4 (feat[login, cards, db]: modificaciones en login, cards y conexión con la base de datos)
             ),
           );
         } else {

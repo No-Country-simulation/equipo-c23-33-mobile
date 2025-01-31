@@ -142,7 +142,11 @@ class WelcomeCard extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
+<<<<<<< HEAD
                                     const FilterPage(especie: "Perro"),
+=======
+                                    const FilterPage(type: "Perro"),
+>>>>>>> 102bde4 (feat[login, cards, db]: modificaciones en login, cards y conexión con la base de datos)
                               ),
                             );
                           },
