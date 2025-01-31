@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/profile/profile_personas.dart';
+import 'package:mobile/screens/profileUser/profile_user.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -30,7 +30,7 @@ class _NavbarState extends State<NavBar> {
     return BottomAppBar(
       color: const Color.fromARGB(255, 255, 255, 255),
       child: SizedBox(
-        height: 90.0, // Aumentamos la altura para incluir el texto
+        height: 90.0, 
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -58,7 +58,7 @@ class _NavbarState extends State<NavBar> {
                 : const Color.fromRGBO(155, 149, 149, 1),
             size: 30,
           ),
-          const SizedBox(height: 5), // Espacio entre el ícono y el texto
+          const SizedBox(height: 5),
           Text(
             label,
             style: TextStyle(

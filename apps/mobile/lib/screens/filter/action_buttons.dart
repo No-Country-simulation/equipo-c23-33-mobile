@@ -7,10 +7,10 @@ class ActionButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center, // Centrar los botones
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _buildCancelButton(context), // Pasamos el contexto aquí
-          const SizedBox(width: 16), // Espacio entre los botones
+          _buildCancelButton(context),
+          const SizedBox(width: 16),
           _buildApplyButton(),
         ],
       ),
@@ -26,10 +26,9 @@ class ActionButtons extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         padding: const EdgeInsets.symmetric(
-            horizontal: 32, vertical: 14), // Aumentar el tamaño
+            horizontal: 32, vertical: 14),
       ),
       onPressed: () {
-        // Navegar de regreso a la pantalla anterior (Home)
         Navigator.pop(context);
       },
       child: const Text(
@@ -47,10 +46,10 @@ class ActionButtons extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         padding: const EdgeInsets.symmetric(
-            horizontal: 32, vertical: 14), // Aumentar el tamaño
+            horizontal: 32, vertical: 14),
       ),
       onPressed: () {
-        // Lógica para aplicar filtros
+
       },
       child: const Text(
         "Aplicar filtros",

@@ -72,7 +72,7 @@ class RefugeCard extends StatelessWidget {
                     children: [
                       const Icon(
                         Icons.location_on,
-                        size: 13, // Reduce el tamaño del ícono
+                        size: 13,
                         color: Colors.grey,
                       ),
                       const SizedBox(width: 2),
@@ -80,9 +80,9 @@ class RefugeCard extends StatelessWidget {
                         child: Text(
                           '$location ($distance)',
                           style: const TextStyle(
-                            fontSize: 10, // Reduce el tamaño del texto
+                            fontSize: 10,
                           ),
-                          overflow: TextOverflow.ellipsis, // Trunca si es muy largo
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],

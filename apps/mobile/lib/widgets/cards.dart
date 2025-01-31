@@ -34,12 +34,11 @@ class AnimalCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(4.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)), // Rueda los bordes
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       elevation: 4, 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Image Section
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
             child: Image.network(
@@ -66,7 +65,6 @@ class AnimalCard extends StatelessWidget {
               },
             ),
           ),
-          // Info Section
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
             child: SingleChildScrollView(
