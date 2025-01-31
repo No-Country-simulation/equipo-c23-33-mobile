@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/categoria/allMascotas.dart';
-import 'package:mobile/screens/home/appbar_home.dart';
-import 'package:mobile/screens/home/cards.dart';
-import 'package:mobile/screens/home/navBar.dart';
-import 'package:mobile/screens/home/welcome_card.dart';
-import 'package:mobile/screens/home/categories_section.dart';
+import 'package:mobile/widgets/home/appbar_home.dart';
+import 'package:mobile/widgets/cards.dart';
+import 'package:mobile/widgets/navBar.dart';
+import 'package:mobile/widgets/home/welcome_card.dart';
+import 'package:mobile/widgets/home/categories_section.dart';
 import 'package:mobile/widgets/buildRefugeCarg.dart';
 
 class Home extends StatefulWidget {

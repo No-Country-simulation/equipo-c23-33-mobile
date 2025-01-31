@@ -2,10 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/filter/filter.dart';
-import 'package:mobile/screens/home/cards.dart';
+import 'package:mobile/widgets/cards.dart';
 import 'package:mobile/screens/perfilMascota/perfil.dart';
-import 'animal_card.dart';
-import 'perfil_mascota.dart';
 
 class FilteredPage extends StatelessWidget {
   final String type;

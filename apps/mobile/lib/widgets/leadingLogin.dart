@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/screens/onboarding/OnboardingStepOne.dart';
 import 'dart:async';
-import 'login_page.dart'; // Asegúrate de tener la pantalla de login creada
+import 'login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

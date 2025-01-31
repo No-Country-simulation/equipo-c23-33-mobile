@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mobile/screens/home/home.dart';
-import 'package:mobile/screens/home/profile.dart';
+import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/widgets/leadingLogin.dart';
 
@@ -27,7 +26,6 @@ class MyApp extends StatelessWidget {
         '/': (context) => const SplashScreen(),
         '/login': (context) => const Login(), // Ruta de login
         '/home': (context) => const Home(), // Ruta de home
-        '/perfil': (context) => const PerfilPage(), // Ruta de perfil
       },
     );
   }

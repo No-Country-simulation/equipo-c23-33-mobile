@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/home/cards.dart';
+import 'package:mobile/widgets/cards.dart';
 
 class ShelterProfile extends StatelessWidget {
   final String shelterName;
@@ -164,21 +164,3 @@ class _TabButton extends StatelessWidget {
     );
   }
 }
-
-// class _AttributeChip extends StatelessWidget {
-//   final String label;
-//   final Color color;
-
-//   const _AttributeChip({required this.label, required this.color});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Chip(
-//       label: Text(
-//         label,
-//         style: const TextStyle(color: Colors.white),
-//       ),
-//       backgroundColor: color,
-//     );
-//   }
-// }

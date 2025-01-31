@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/home/cards.dart';
+import 'package:mobile/widgets/cards.dart';
 import 'package:mobile/screens/perfilMascota/sherterProfile.dart';
 
 class PetProfile extends StatefulWidget {
-  final Map<String, String>? animal; // Puede ser null
+  final Map<String, String>? animal;
   const PetProfile({super.key, required this.animal});
 
   @override
@@ -11,12 +11,12 @@ class PetProfile extends StatefulWidget {
 }
 
 class _PetProfileState extends State<PetProfile> {
-  late final Map<String, String>? animal; // Puede ser null
+  late final Map<String, String>? animal;
 
   @override
   void initState() {
     super.initState();
-    animal = widget.animal; // Acceder a la propiedad del widget
+    animal = widget.animal;
   }
 
   @override
@@ -31,7 +31,6 @@ class _PetProfileState extends State<PetProfile> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Imagen y carrusel
             Center(
               child: SizedBox(
                 height: 200,
@@ -40,7 +39,7 @@ class _PetProfileState extends State<PetProfile> {
                     return ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: Image.network(
-                        animal?['photo_url'] ?? '', // Cambia la ruta según las imágenes
+                        animal?['photo_url'] ?? '',
                         fit: BoxFit.cover,
                       ),
                     );
@@ -49,19 +48,24 @@ class _PetProfileState extends State<PetProfile> {
               ),
             ),
             const SizedBox(height: 16.0),
-
-            // Datos básicos
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                InfoChip(label: 'Edad', value: animal?['age'] ?? 'Desconocido', color: Colors.purple),
-                InfoChip(label: 'Sexo', value: animal?['sex'] ?? 'Desconocido', color: Colors.green),
-                InfoChip(label: 'Peso', value: animal?['weight'] ?? 'Desconocido', color: Colors.orange),
+                InfoChip(
+                    label: 'Edad',
+                    value: animal?['age'] ?? 'Desconocido',
+                    color: Colors.purple),
+                InfoChip(
+                    label: 'Sexo',
+                    value: animal?['sex'] ?? 'Desconocido',
+                    color: Colors.green),
+                InfoChip(
+                    label: 'Peso',
+                    value: animal?['weight'] ?? 'Desconocido',
+                    color: Colors.orange),
               ],
             ),
             const SizedBox(height: 16.0),
-
-            // Publicado por
             ListTile(
               contentPadding: EdgeInsets.zero,
               leading: CircleAvatar(
@@ -89,7 +93,8 @@ class _PetProfileState extends State<PetProfile> {
                           sex: animal?['sex'] ?? 'Desconocido',
                           shelter: animal?['shelter'] ?? 'Desconocido',
                           photoUrl: animal?['photo_url'] ?? '',
-                          healthStatus: animal?['health_status'] ?? 'Desconocido',
+                          healthStatus:
+                              animal?['health_status'] ?? 'Desconocido',
                           status: animal?['status'] ?? 'Desconocido',
                           idShelter: animal?['id_shelter'] ?? 'Desconocido',
                           createdAt: animal?['created_at'] ?? 'Desconocido',
@@ -101,32 +106,25 @@ class _PetProfileState extends State<PetProfile> {
               },
             ),
             const Divider(),
-
-            // Conoce al animal
-            SectionHeader(title: 'Conoce a ${animal?["name"] ?? "Desconocido"}'),
+            SectionHeader(
+                title: 'Conoce a ${animal?["name"] ?? "Desconocido"}'),
             Text(
               animal?['description'] ?? 'Descripción no disponible.',
               style: const TextStyle(fontSize: 16.0),
             ),
             const SizedBox(height: 16.0),
-
-            // Su historial médico
             const SectionHeader(title: 'Su historial médico'),
             Text(
               animal?['medical_history'] ?? 'No disponible.',
               style: const TextStyle(fontSize: 16.0),
             ),
             const SizedBox(height: 16.0),
-
-            // Su personalidad
             const SectionHeader(title: 'Su personalidad'),
             Text(
               animal?['personality'] ?? 'No disponible.',
               style: const TextStyle(fontSize: 16.0),
             ),
             const SizedBox(height: 32.0),
-
-            // Botones de acción
             Row(
               children: [
                 Expanded(

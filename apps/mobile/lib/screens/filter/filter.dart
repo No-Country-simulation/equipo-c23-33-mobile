@@ -117,7 +117,7 @@ class FilterPageState extends State<FilterPage> {
   Widget _buildFilterButton(String text, bool isSelected) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(0, 40), // Ajusta el tamaño de los botones
+        minimumSize: const Size(0, 40),
         backgroundColor: isSelected ? Colors.pink : Colors.white,
         side: BorderSide(color: Colors.grey.shade300),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
