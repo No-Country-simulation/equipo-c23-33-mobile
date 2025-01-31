@@ -3,16 +3,16 @@ import 'dropdown_filters.dart';
 import 'action_buttons.dart';
 
 class FilterPage extends StatefulWidget {
-  final String category;
+  final String type;
 
-  const FilterPage({super.key, required this.category});
+  const FilterPage({super.key, required this.type});
 
   @override
   // ignore: library_private_types_in_public_api
-  _FilterPageState createState() => _FilterPageState();
+  FilterPageState createState() => FilterPageState();
 }
 
-class _FilterPageState extends State<FilterPage> {
+class FilterPageState extends State<FilterPage> {
   String _selectedCategory = "Perro";
   String _selectedGender = "Hembra";
   String _selectedSize = "Mediano";
@@ -22,7 +22,13 @@ class _FilterPageState extends State<FilterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Filtros: ${widget.category}"),
+        title: const Text(
+          "Filtros",
+          style: TextStyle(
+            fontWeight: FontWeight.bold, 
+          ),
+        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -73,7 +79,7 @@ class _FilterPageState extends State<FilterPage> {
               ],
               (value) => setState(() => _selectedAge = value),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
             const ActionButtons(),
           ],
         ),
@@ -116,6 +122,7 @@ class _FilterPageState extends State<FilterPage> {
         backgroundColor: isSelected ? Colors.pink : Colors.white,
         side: BorderSide(color: Colors.grey.shade300),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       ),
       onPressed: () => _handleFilterButtonPressed(text),
       child: Text(

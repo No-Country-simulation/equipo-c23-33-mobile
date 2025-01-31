@@ -1,12 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/home/home.dart';
+import 'package:mobile/screens/home_screen.dart';
 
 class FirebaseAuthService {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  static Future<void> loginUser(
-      BuildContext context, String email, String password) async {
+  static Future<void> loginUser(BuildContext context, String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
 
@@ -17,15 +16,17 @@ class FirebaseAuthService {
         );
       }
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
+      if (context.mounted) {
+        if (e.code == 'user-not-found') {
         // ignore: use_build_context_synchronously
-        _showSnackBar(context, 'Usuario no encontrado. Intente registrarse.');
-      } else if (e.code == 'wrong-password') {
+          _showSnackBar(context, 'Usuario no encontrado. Intente registrarse.');
+        } else if (e.code == 'wrong-password') {
         // ignore: use_build_context_synchronously
-        _showSnackBar(context, 'Contraseña incorrecta.');
-      } else {
+          _showSnackBar(context, 'Contraseña incorrecta.');
+        } else {
         // ignore: use_build_context_synchronously
-        _showSnackBar(context, 'Error: ${e.message}');
+          _showSnackBar(context, 'Error: ${e.message}');
+        }
       }
     }
   }
@@ -65,7 +66,9 @@ class FirebaseAuthService {
           errorMessage = 'Ocurrió un error. Intente nuevamente.';
       }
       // ignore: use_build_context_synchronously
-      _showSnackBar(context, errorMessage);
+      if (context.mounted) {
+        _showSnackBar(context, errorMessage);
+      }
     }
   }
 

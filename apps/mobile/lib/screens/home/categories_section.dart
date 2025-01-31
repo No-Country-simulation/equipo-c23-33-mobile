@@ -47,9 +47,9 @@ class CategoriesSection extends StatelessWidget {
             ),
             _buildCategoryCard(
               context,
-              title: 'shelters',
+              title: 'Refugios',
               color: const Color.fromRGBO(82, 191, 113, 1),
-              image: 'assets/images/shelters1_categorias.png',
+              image: 'assets/images/Refugios1_categorias.png',
             ),
           ],
         ),
@@ -68,7 +68,7 @@ class CategoriesSection extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => FilteredPage(category: title),
+            builder: (context) => FilteredPage(category: title, type: '', animals: [],),
           ),
         );
       },
