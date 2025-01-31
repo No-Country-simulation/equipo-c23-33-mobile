@@ -15,6 +15,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _selectedIndex = 0; // Estado para manejar el índice seleccionado
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -84,7 +92,10 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          bottomNavigationBar: const NavBar(),
+          bottomNavigationBar: NavBar(
+            selectedIndex: _selectedIndex, // Pasar el índice seleccionado
+            onItemTapped: _onItemTapped, // Pasar la función de actualización
+          ),
         );
       },
     );
