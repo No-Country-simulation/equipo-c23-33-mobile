@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/pets/pets.dart';
 
@@ -62,7 +60,7 @@ class _NavbarState extends State<NavBar> {
           Icon(
             icon,
             color: widget.selectedIndex == index
-                ? const Color.fromRGBO(246, 51, 94, 1)
+                ? Colors.red
                 : const Color.fromRGBO(155, 149, 149, 1),
             size: 30,
           ),
@@ -72,7 +70,7 @@ class _NavbarState extends State<NavBar> {
             style: TextStyle(
               fontSize: 12,
               color: widget.selectedIndex == index
-                  ? const Color.fromRGBO(246, 51, 94, 1)
+                  ? Colors.red
                   : const Color.fromRGBO(155, 149, 149, 1),
             ),
           ),
