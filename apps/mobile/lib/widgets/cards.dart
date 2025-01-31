@@ -100,7 +100,7 @@ class AnimalCard extends StatelessWidget {
                       const Icon(Icons.location_on, size: 14, color: Colors.grey),
                       const SizedBox(width: 4),
                       Text(
-                        '(id:$idShelter - dirección)', // Debo acceder al id del refugio y con ese id buscar el campo de address
+                        '(idShelter - dirección)', // Debo acceder al id del refugio y con ese id buscar el campo de address
                         style: const TextStyle(color: Colors.grey, fontSize: 12),
                       ),
                     ],
