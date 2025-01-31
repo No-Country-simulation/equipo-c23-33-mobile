@@ -50,12 +50,9 @@ class _CategoriesSectionState extends State<CategoriesSection> {
       return const Center(child: CircularProgressIndicator());
     }
 
-    // print('Lista de animals: $animals');
-
-    // Convertimos animals de List<Map<String, dynamic>> a List<Map<String, String>>
     List<Map<String, String>> animalsString = animals.map((animal) {
       return Map<String, String>.from(animal.map((key, value) {
-        return MapEntry(key, value.toString()); // Convertir valores a String
+        return MapEntry(key, value.toString());
       }));
     }).toList();
 
@@ -81,7 +78,7 @@ class _CategoriesSectionState extends State<CategoriesSection> {
           childAspectRatio: 2.2,
           children: [
             _buildCategoryCard(context,
-                title: 'Gatos',
+                title: 'Gato',
                 color: const Color.fromRGBO(254, 156, 86, 1),
                 image: 'assets/images/Gato1_categorias.png',
                 animals: animalsString),
@@ -118,11 +115,7 @@ class _CategoriesSectionState extends State<CategoriesSection> {
             context,
             MaterialPageRoute(
               builder: (context) =>
-<<<<<<< HEAD
-                  FilteredPage(especie: title, animals: animals),
-=======
                   FilteredPage(type: title, animals: animals),
->>>>>>> 102bde4 (feat[login, cards, db]: modificaciones en login, cards y conexión con la base de datos)
             ),
           );
         } else {

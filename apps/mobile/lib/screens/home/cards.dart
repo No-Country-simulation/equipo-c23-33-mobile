@@ -35,7 +35,7 @@ class AnimalCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.all(4.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)), // Rueda los bordes
-      elevation: 2, 
+      elevation: 4, 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -44,7 +44,7 @@ class AnimalCard extends StatelessWidget {
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
             child: Image.network(
               photoUrl,
-              height: 75, 
+              height: 93, 
               width: double.infinity,
               fit: BoxFit.cover,
               loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
@@ -91,7 +91,7 @@ class AnimalCard extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Chip(
-                        label: Text(age),
+                        label: Text('${int.tryParse(age) ?? 0} ${int.tryParse(age) != null && int.tryParse(age)! > 1 ? 'años' : 'año'}'),
                         backgroundColor: Colors.green.shade100,
                         labelStyle: const TextStyle(fontSize: 12),
                       ),
@@ -102,7 +102,7 @@ class AnimalCard extends StatelessWidget {
                       const Icon(Icons.location_on, size: 14, color: Colors.grey),
                       const SizedBox(width: 4),
                       Text(
-                        '(id:$idShelter)', // Debo acceder al id del refugio y con ese id buscar el campo de address
+                        '(id:$idShelter - dirección)', // Debo acceder al id del refugio y con ese id buscar el campo de address
                         style: const TextStyle(color: Colors.grey, fontSize: 12),
                       ),
                     ],

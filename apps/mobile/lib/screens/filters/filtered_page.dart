@@ -53,7 +53,10 @@ class FilteredPage extends StatelessWidget {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 0.8,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
               ),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               itemCount: filteredAnimals.length,
               itemBuilder: (context, index) {
                 final animal = filteredAnimals[index];
