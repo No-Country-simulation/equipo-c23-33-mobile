@@ -25,7 +25,7 @@ class _CategoriesSectionState extends State<CategoriesSection> {
 
   Future<void> fetchAnimals() async {
     try {
-      final response = await ApiService.getRequest('/mascotas');
+      final response = await ApiService.getRequest('/pets');
       if (response.statusCode == 200) {
         setState(() {
           animals = List<Map<String, dynamic>>.from(jsonDecode(response.body));

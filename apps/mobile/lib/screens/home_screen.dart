@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/categoria/allMascotas.dart';
+import 'package:mobile/screens/categoria/allPets.dart';
+import 'package:mobile/screens/categoria/allShelters.dart';
 import 'package:mobile/widgets/home/appbar_home.dart';
 import 'package:mobile/widgets/cards.dart';
 import 'package:mobile/widgets/navBar.dart';
@@ -37,6 +38,7 @@ class _HomeState extends State<Home> {
                 CategoriesSection(),
                 _buildSection(
                   title: "Mascotas en adopción",
+                  entidad: "pets",
                   cards: [
                     AnimalCard(
                       name: "Milo",
@@ -72,6 +74,7 @@ class _HomeState extends State<Home> {
                 ),
                 _buildSection(
                   title: "Refugios cercanos",
+                  entidad: "shelters",
                   cards: [
                     RefugeCard(
                       name: "Refugio feliz",
@@ -101,7 +104,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _buildSection({required String title, required List<Widget> cards}) {
+  Widget _buildSection({required String title, required String entidad, required List<Widget> cards}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -119,7 +122,7 @@ class _HomeState extends State<Home> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Allmascotas()),
+                    MaterialPageRoute(builder: (context,) => entidad == "shelters" ? AllShelters() :  AllPets()),
                   );
                 },
                 child: const Text("Ver todo"),
