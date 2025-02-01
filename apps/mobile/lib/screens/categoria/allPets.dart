@@ -14,7 +14,7 @@ class AllPets extends StatelessWidget {
   
   Future<List<Map<String, String>>> fetchAnimals() async {
     try {
-      final response = await ApiService.getRequest('/shelters');
+      final response = await ApiService.getRequest('/pets');
 
       if (response is http.Response) {
         if (response.statusCode == 200) {
