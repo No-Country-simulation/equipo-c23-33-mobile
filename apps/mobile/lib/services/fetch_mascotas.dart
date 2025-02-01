@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:mobile/services/api.dart';
 
 void fetchDataMascotas() async {
-  final response = await ApiService.getRequest('/mascotas');
+  final response = await ApiService.getRequest('/pets');
   if (response.statusCode == 200) {
     print(jsonDecode(response.body)); // Datos recibidos
   } else {

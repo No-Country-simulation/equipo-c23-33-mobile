@@ -6,15 +6,15 @@ import 'package:mobile/services/api.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class Allmascotas extends StatelessWidget {
-  const Allmascotas({super.key});
+class AllPets extends StatelessWidget {
+  const AllPets({super.key});
 
 
-  //Fetch a la api local "localhost:3000/mascotas"
+  //Fetch a la api local "localhost:3000/shelters"
   
   Future<List<Map<String, String>>> fetchAnimals() async {
     try {
-      final response = await ApiService.getRequest('/mascotas');
+      final response = await ApiService.getRequest('/shelters');
 
       if (response is http.Response) {
         if (response.statusCode == 200) {

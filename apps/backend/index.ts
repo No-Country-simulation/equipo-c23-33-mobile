@@ -11,8 +11,8 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
-app.use('/mascotas', mascotaRoutes);
-app.use('/refugios', refugioRoutes);
+app.use('/pets', mascotaRoutes);
+app.use('/shelters', refugioRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
