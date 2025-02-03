@@ -1,38 +1,28 @@
 import { Request, Response } from 'express';
-import { addMascota, getMascotas, getMascotasByRefugio } from '../services/mascotaService';
-import { db } from '../config/firebaseConfig';
+import { 
+  addMascota, 
+  getMascotas, 
+  getMascotaById, 
+  updateMascotaService, 
+  deleteMascotaService 
+} from '../services/mascotaService';
 
-// Endpoint para crear una nueva mascota
+// Crear nueva mascota
 export const createMascota = async (req: Request, res: Response) => {
   try {
     const mascotaId = await addMascota(req.body);
-    res.status(201).send({ id: mascotaId });
+    res.status(201).json({ id: mascotaId });
   } catch (error) {
     console.error("Error al crear mascota:", error);
-    res.status(500).send({ error: 'Error al añadir la mascota' });
+    res.status(500).json({ error: 'Error al añadir la mascota' });
   }
 };
 
-// Endpoint para listar mascotas con filtros
+// Listar todas las mascotas con filtros
 export const listMascotas = async (req: Request, res: Response) => {
   try {
-    console.log("Query parameters recibidos:", req.query);
-
-    const filtros = {
-      nombre: req.query.nombre as string,
-      especie: req.query.especie as string,
-      tamaño: req.query.tamaño as string,
-      estadoSalud: req.query.estadoSalud as string,
-      idRefugio: req.query.idRefugio ? Number(req.query.idRefugio) : undefined,
-      edad: req.query.edad ? Number(req.query.edad) : undefined,
-    };
-
-    console.log("Filtros aplicados:", filtros);
-
+    const filtros = req.query;
     const mascotas = await getMascotas(filtros);
-
-    console.log("Resultados obtenidos del servicio:", mascotas);
-
     res.json(mascotas);
   } catch (error) {
     console.error("Error al listar mascotas:", error);
@@ -40,26 +30,44 @@ export const listMascotas = async (req: Request, res: Response) => {
   }
 };
 
-export const listMascotasByRefugio = async (req: Request, res: Response) => {
-  const { idRefugio } = req.params;
-
+// Obtener una mascota por ID
+export const getMascota = async (req: Request, res: Response) => {
   try {
-    const snapshot = await db
-      .collection('mascotas')
-      .where('idRefugio', '==', idRefugio) // No es necesario convertir el tipo aquí
-      .get();
-
-    if (snapshot.empty) {
-      return res.status(404).send({ message: 'No se encontraron mascotas con este idRefugio.' });
+    const mascota = await getMascotaById(req.params.id);
+    if (!mascota) {
+      return res.status(404).json({ error: 'Mascota no encontrada' });
     }
-
-    const mascotas = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
-    res.status(200).send(mascotas);
+    res.json(mascota);
   } catch (error) {
-    res.status(500).send({ error: 'Error al obtener mascotas por refugio' });
+    console.error("Error al obtener mascota:", error);
+    res.status(500).json({ error: "Error al obtener la mascota" });
+  }
+};
+
+// Actualizar mascota
+export const updateMascota = async (req: Request, res: Response) => {
+  try {
+    const updated = await updateMascotaService(req.params.id, req.body);
+    if (!updated) {
+      return res.status(404).json({ error: "Mascota no encontrada" });
+    }
+    res.json({ message: "Mascota actualizada correctamente" });
+  } catch (error) {
+    console.error("Error al actualizar mascota:", error);
+    res.status(500).json({ error: "Error al actualizar la mascota" });
+  }
+};
+
+// Eliminar mascota
+export const deleteMascota = async (req: Request, res: Response) => {
+  try {
+    const deleted = await deleteMascotaService(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ error: "Mascota no encontrada" });
+    }
+    res.json({ message: "Mascota eliminada correctamente" });
+  } catch (error) {
+    console.error("Error al eliminar mascota:", error);
+    res.status(500).json({ error: "Error al eliminar la mascota" });
   }
 };
