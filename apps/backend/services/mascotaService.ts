@@ -4,7 +4,7 @@ import { Pets, pet } from '../models/Mascota';
 // Agregar una nueva mascota
 export const addMascota = async (mascotaData: Pets): Promise<string> => {
   const nuevaMascota = new pet(mascotaData);
-  const docRef = await db.collection('pets').add(nuevaMascota.toFirestore());
+  const docRef = await db.collection('mascotas').add(nuevaMascota.toFirestore());
   return docRef.id;
 };
 
@@ -16,7 +16,7 @@ export const getMascotaById = async (id: string): Promise<Pets | null> => {
 
 // Obtener todas las mascotas con filtros
 export const getMascotas = async (filtros: Partial<Pets>): Promise<Pets[]> => {
-  let queryRef = db.collection('pets') as FirebaseFirestore.Query;
+  let queryRef = db.collection('mascotas') as FirebaseFirestore.Query;
 
   Object.entries(filtros).forEach(([key, value]) => {
     if (value !== undefined) {
@@ -30,7 +30,7 @@ export const getMascotas = async (filtros: Partial<Pets>): Promise<Pets[]> => {
 
 // Actualizar mascota
 export const updateMascotaService = async (id: string, data: Partial<Pets>): Promise<boolean> => {
-  const docRef = db.collection('pets').doc(id);
+  const docRef = db.collection('mascotas').doc(id);
   const doc = await docRef.get();
 
   if (!doc.exists) return false;
@@ -41,7 +41,7 @@ export const updateMascotaService = async (id: string, data: Partial<Pets>): Pro
 
 // Eliminar mascota
 export const deleteMascotaService = async (id: string): Promise<boolean> => {
-  const docRef = db.collection('pets').doc(id);
+  const docRef = db.collection('mascotas').doc(id);
   const doc = await docRef.get();
 
   if (!doc.exists) return false;
