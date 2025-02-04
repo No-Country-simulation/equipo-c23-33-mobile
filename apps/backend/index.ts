@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import mascotaRoutes from './routes/mascotaRoutes';
 import usuarioRoutes from './routes/usuarioRoute';
 import refugioRoutes from './routes/refugioRoutes';
+import adoptionRoutes from './routes/adoptionRoutes'; 
+
 dotenv.config();
 
 const app = express();
@@ -13,6 +15,9 @@ const PORT = process.env.PORT || 3000;
 app.use('/pets', mascotaRoutes);
 app.use('/shelters', refugioRoutes);
 app.use('/users',usuarioRoutes);
+app.use('/adoptions', adoptionRoutes);
+
+
 
 // Middleware para manejar errores (IMPORTANTE)
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
