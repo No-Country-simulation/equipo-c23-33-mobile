@@ -10,7 +10,7 @@ class AllPets extends StatelessWidget {
   const AllPets({super.key});
 
 
-  //Fetch a la api local "localhost:3000/shelters"
+  //Fetch a la api local "localhost:3000/pets"
   
   Future<List<Map<String, String>>> fetchAnimals() async {
     try {

@@ -6,7 +6,7 @@ import { IUsuario, Usuario } from '../models/Usuario';
 export const addUsuario = async (usuarioData: IUsuario): Promise<string> => {
   
   const nuevoUsuario = new Usuario(usuarioData);
-  const docRef = await db.collection('user').add(nuevoUsuario.toFirestore());
+  const docRef = await db.collection('usuarios').add(nuevoUsuario.toFirestore());
   return docRef.id;
 };
 

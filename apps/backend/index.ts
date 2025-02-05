@@ -1,7 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import mascotaRoutes from './routes/mascotaRoutes';
-
 import usuarioRoutes from './routes/usuarioRoute';
 import refugioRoutes from './routes/refugioRoutes';
 import adoptionRoutes from './routes/adoptionRoutes'; 
