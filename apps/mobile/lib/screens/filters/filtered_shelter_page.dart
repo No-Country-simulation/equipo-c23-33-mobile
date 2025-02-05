@@ -7,11 +7,14 @@ import 'package:mobile/widgets/cards.dart';
 import 'package:mobile/screens/perfilMascota/perfil.dart';
 
 class FilteredPageShelter extends StatelessWidget {
-  final List<Map<String, String>> shelters;
+  
+  final String type;
+  final List<Map<String, String>> objets;
 
   const FilteredPageShelter({
     super.key,
-    required this.shelters
+    required this.type,
+    required this.objets
   });
 
   @override
@@ -39,7 +42,7 @@ class FilteredPageShelter extends StatelessWidget {
           ),
         ],
       ),
-      body: shelters.isEmpty
+      body: objets.isEmpty
           ? const Center(
               child: Text('No se encontraron animales para esta categoría.'))
           : GridView.builder(
@@ -50,9 +53,9 @@ class FilteredPageShelter extends StatelessWidget {
                 mainAxisSpacing: 10,
               ),
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              itemCount: shelters.length,
+              itemCount: objets.length,
               itemBuilder: (context, index) {
-                final shelter = shelters[index];
+                final shelter = objets[index];
                 return GestureDetector(
                   onTap: () {
                     // Navigator.push(
