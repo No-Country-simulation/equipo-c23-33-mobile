@@ -9,9 +9,8 @@ import 'package:http/http.dart' as http;
 class AllShelters extends StatelessWidget {
   const AllShelters({super.key});
 
-
   //Fetch a la api local "localhost:3000/shelters"
-  
+
   Future<List<Map<String, String>>> fetchShelters() async {
     try {
       final response = await ApiService.getRequest('/shelters');
@@ -44,25 +43,26 @@ class AllShelters extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
-            body: Center(child: CircularProgressIndicator()), 
+            body: Center(child: CircularProgressIndicator()),
           );
         } else if (snapshot.hasError) {
           return Scaffold(
             body: Center(
-              child: Text('Error: ${snapshot.error}'), 
+              child: Text('Error: ${snapshot.error}'),
             ),
           );
         } else if (snapshot.hasData) {
           final shelters = snapshot.data ?? [];
-
+          final objets = "shelters";
           return Scaffold(
             body: FilteredPageShelter(
-              shelters: shelters,
+              type: objets,
+              objets: shelters,
             ),
           );
         }
         return const Scaffold(
-          body: Center(child: Text('No data available')), 
+          body: Center(child: Text('No data available')),
         );
       },
     );

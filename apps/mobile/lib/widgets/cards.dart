@@ -86,12 +86,14 @@ class AnimalCard extends StatelessWidget {
                             ? Colors.blue.shade100
                             : Colors.pink.shade100,
                         labelStyle: const TextStyle(fontSize: 12),
+                        padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
                       ),
                       const SizedBox(width: 4),
                       Chip(
                         label: Text('${int.tryParse(age) ?? 0} ${int.tryParse(age) != null && int.tryParse(age)! > 1 ? 'años' : 'año'}'),
                         backgroundColor: Colors.green.shade100,
                         labelStyle: const TextStyle(fontSize: 12),
+                        padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
                       ),
                     ],
                   ),

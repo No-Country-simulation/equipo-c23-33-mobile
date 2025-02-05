@@ -17,13 +17,13 @@ class FilteredPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> filteredAnimals = type == "all"
+    List<Map<String, String>> filteredAnimals = type == "all" || type == "Otros"
         ? animals
         : animals.where((animal) => animal['type'] == type).toList();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(type),
+        title: Text(type == "all" ? "Todos" : type),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8),
