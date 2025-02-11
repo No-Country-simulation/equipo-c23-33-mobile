@@ -10,7 +10,6 @@ class AllShelters extends StatelessWidget {
   const AllShelters({super.key});
 
   //Fetch a la api local "localhost:3000/shelters"
-
   Future<List<Map<String, String>>> fetchShelters() async {
     try {
       final response = await ApiService.getRequest('/shelters');
